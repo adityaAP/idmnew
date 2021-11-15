@@ -16,7 +16,7 @@ class Home extends CI_Controller {
 		$negara = $getloc->country;
 		$this->load->view('home/header');
 		if ($negara=='ID') {
-			$this->load->view('home/home');
+			$this->load->view('home/id/home');
 			$this->load->view('home/footer');			
 		}else{
 			$this->load->view('home/home');
@@ -27,9 +27,16 @@ class Home extends CI_Controller {
 	
 	public function about()
 	{
+		$getloc = json_decode(file_get_contents("http://ipinfo.io/"));
+		$negara = $getloc->country;
 		$this->load->view('home/header');
-		$this->load->view('home/about');
-		$this->load->view('home/footer');
+		if ($negara=='ID') {
+			$this->load->view('home/id/about');
+			$this->load->view('home/id/footer');			
+		}else{
+			$this->load->view('home/about');
+			$this->load->view('home/footer');
+		}
 	}
 	public function estimate()
 	{
@@ -51,16 +58,29 @@ class Home extends CI_Controller {
 	}
 	public function services()
 	{
+		$getloc = json_decode(file_get_contents("http://ipinfo.io/"));
+		$negara = $getloc->country;
 		$this->load->view('home/header');
-		$this->load->view('home/services');
-		$this->load->view('home/footer');
+		if ($negara=='ID') {
+			$this->load->view('home/id/services');
+			$this->load->view('home/id/footer');			
+		}else{
+			$this->load->view('home/services');
+			$this->load->view('home/footer');
+		}
 	}
 	public function contact()
 	{
+		$getloc = json_decode(file_get_contents("http://ipinfo.io/"));
+		$negara = $getloc->country;
 		$this->load->view('home/header');
-		$this->load->view('home/contact');
-		$this->load->view('home/footer');
-		$this->load->view('home/scriptform');
+		if ($negara=='ID') {
+			$this->load->view('home/id/contact');
+			$this->load->view('home/id/footer');			
+		}else{
+			$this->load->view('home/contact');
+			$this->load->view('home/footer');
+		}
 	}
 	public function tracking()
 	{
@@ -68,8 +88,15 @@ class Home extends CI_Controller {
 		if ($this->input->get('ponumb')) {
 			$data['datatrck'] = $this->home_m->data_tracking($this->input->get('ponumb'));
 		}
+		$getloc = json_decode(file_get_contents("http://ipinfo.io/"));
+		$negara = $getloc->country;
 		$this->load->view('home/header');
-		$this->load->view('home/tracking',$data);
-		$this->load->view('home/footer');
+		if ($negara=='ID') {
+			$this->load->view('home/id/tracking',$data);
+			$this->load->view('home/id/footer');			
+		}else{
+			$this->load->view('home/tracking',$data);
+			$this->load->view('home/footer');
+		}
 	}
 }

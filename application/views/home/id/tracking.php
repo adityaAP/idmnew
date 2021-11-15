@@ -24,7 +24,7 @@
 								
 								<div class="form-row">
 									<div class="form-group col-lg-12">
-										<label class="required font-weight-bold text-dark text-4">PO Number</label>
+										<label class="required font-weight-bold text-dark text-4">Nomor PO</label>
 										<input type="text" value="" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="ponumb" required>
 									</div>
 								</div>
@@ -78,3 +78,4 @@
 					</div>
 				</div>
 				<?php } ?>
+					

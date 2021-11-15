@@ -8,7 +8,7 @@
 							<a href="index.html" class="logo pr-0 pr-lg-3">
 								<img alt="Porto Website Template" src="<?=base_url('assets/home/')?>logo/idm.png" class="opacity-7 bottom-4" height="120" width="120">
 							</a>
-							<p class="mt-2 mb-2" style="color:white;font-weight:bold;"><b>PT INTAN DAYA MANDIRI</b> is a company engaged in the field of freight forwarding services, we provide a variety of services that are cheap, fast, safe, and reliable</p>
+							<p class="mt-2 mb-2" style="color:white;font-weight:bold;"><b>PT INTAN DAYA MANDIRI</b> adalah perusahaan yang bergerak di bidang jasa pengiriman barang, kami menyediakan berbagai layanan yang murah, cepat, aman, dan terpercaya</p>
 							
 						</div>
 						<div class="col-md-6">

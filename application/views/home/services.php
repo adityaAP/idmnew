@@ -221,7 +221,7 @@
 								<div class="row align-items-center pt-5 pb-3 appear-animation" data-appear-animation="fadeInRightShorter">
 									<div class="col-md-8 pr-md-5 mb-5 mb-md-0">
 										<h2 class="font-weight-normal text-6 mb-3"><strong class="font-weight-extra-bold">AIR FREIGHT</strong> </h2>
-										<p class="text-4">Those who have been involved in transporting heavy and oversized cargo know that it is extremely complex, challenging and tedious.  It is influenced by various factors such as the type of cargo and its volume, the aircraft chosen, the timing of the airlift, airports involved, facilities required, trip length and the legal structure and support to name a few.</p>
+										<p class="text-4">Air Transport, is widely recognized as the best choice in terms of speed and time efficiency in shipping goods on a national and international scale. Undoubtedly, the ability to move goods by air, any time and to any destination is our main service</p>
 									</div>
 									<div class="col-md-4 px-5 px-md-3">
 										<img class="img-fluid scale-2 my-4" src="<?=base_url('assets/home/gambar/14.png')?>" alt="style switcher" />

@@ -3,7 +3,7 @@
 					<div class="container">
 						<div class="row mt-5">
 							<div class="col-md-12 align-self-center p-static order-2 text-center">
-								<h1 class="text-9 font-weight-bold">Contact Us</h1>
+								<h1 class="text-9 font-weight-bold">Kontak Kami</h1>
 							</div>
 						</div>
 					</div>
@@ -15,39 +15,39 @@
 
 							<form id="contact-form" action="<?=site_url('home/contactus')?>" method="POST">
 								<div class="contact-form-success alert alert-success d-none mt-4">
-									<strong>Success!</strong> Your message has been sent to us.
+									<strong>Sukses!</strong> Pesan Anda telah dikirimkan kepada kami.
 								</div>
 							
 								<div class="contact-form-error alert alert-danger d-none mt-4">
-									<strong>Error!</strong> There was an error sending your message.
+									<strong>Error!</strong> Terjadi kesalahan saat mengirim pesan Anda.
 									<span class="mail-error-message text-1 d-block"></span>
 								</div>
 								
 								<div class="form-row">
 									<div class="form-group col-lg-6">
-										<label class="required font-weight-bold text-dark text-2">Full Name</label>
-										<input type="text" value="" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" required>
+										<label class="required font-weight-bold text-dark text-2">Nama Lengkap</label>
+										<input type="text" value="" data-msg-required="Masukan nama anda." maxlength="100" class="form-control" name="name" required>
 									</div>
 									<div class="form-group col-lg-6">
-										<label class="required font-weight-bold text-dark text-2">Email Address</label>
-										<input type="email" value="" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" required>
+										<label class="required font-weight-bold text-dark text-2">Email</label>
+										<input type="email" value="" data-msg-required="Masukan email anda." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" required>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-group col">
-										<label class="font-weight-bold text-dark text-2">Subject</label>
-										<input type="text" value="" data-msg-required="Please enter the subject." maxlength="100" class="form-control" name="subject" required>
+										<label class="font-weight-bold text-dark text-2">Subjek</label>
+										<input type="text" value="" data-msg-required="Masukan subjek." maxlength="100" class="form-control" name="subject" required>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-group col">
-										<label class="required font-weight-bold text-dark text-2">Message</label>
-										<textarea maxlength="5000" data-msg-required="Please enter your message." rows="5" class="form-control" name="message" required></textarea>
+										<label class="required font-weight-bold text-dark text-2">Pesan</label>
+										<textarea maxlength="5000" data-msg-required="Masukan pesan." rows="5" class="form-control" name="message" required></textarea>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-group col">
-										<input type="submit" value="Send Message" class="btn btn-primary btn-modern" data-loading-text="Loading...">
+										<input type="submit" value="Kirim Pesan" class="btn btn-primary btn-modern" data-loading-text="Loading...">
 									</div>
 								</div>
 							</form>
@@ -58,10 +58,10 @@
 						<div class="col-lg-4">
 							
 							<div class="overflow-hidden mb-3">
-								<h4 class="pt-5 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200" data-plugin-options="{'accY': -200}"><strong>FOLLOW US</strong></h4>
+								<h4 class="pt-5 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200" data-plugin-options="{'accY': -200}"><strong>IKUTI KAMI</strong></h4>
 							</div>
 							<div class="overflow-hidden mb-3">
-								<p class="mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="600" data-plugin-options="{'accY': -200}">The success and development of the company has many factors that influence inside or outside the company itself.</p>
+								<p class="mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="600" data-plugin-options="{'accY': -200}">Keberhasilan dan perkembangan perusahaan memiliki banyak faktor yang mempengaruhi di dalam maupun di luar perusahaan itu sendiri.</p>
 								
 							</div>
 							<div class="overflow-hidden">
@@ -75,22 +75,22 @@
 						</div>
 						<div class="col-lg-4 offset-lg-1 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="800" data-plugin-options="{'accY': -200}">
 
-							<h4 class="pt-5">Our <strong>Office</strong></h4>
+							<h4 class="pt-5"><strong>KANTOR KAMI</strong></h4>
 							<ul class="list list-icons list-icons-style-3 mt-2">
-								<li><i class="fas fa-map-marker-alt top-6"></i> <strong>Address:</strong> Mutiara Gading blok E nomor 5Jl. Ketileng, Klipang, Semarang</li>
-								<li><i class="fas fa-phone top-6"></i> <strong>Phone:</strong> (024) 76737893</li>								
-								<li><i class="fas fa-map-marker-alt top-6"></i> <strong>Address:</strong> Ruko Tambun City RG.08 Jln. Sultan Hasanudin, Tambun Selatan, Bekasi</li>
-								<li><i class="fas fa-phone top-6"></i> <strong>Phone:</strong> (021) 89528543</li>
+								<li><i class="fas fa-map-marker-alt top-6"></i> <strong>Alamat:</strong> Mutiara Gading blok E nomor 5Jl. Ketileng, Klipang, Semarang</li>
+								<li><i class="fas fa-phone top-6"></i> <strong>Telepon:</strong> (024) 76737893</li>								
+								<li><i class="fas fa-map-marker-alt top-6"></i> <strong>Alamat:</strong> Ruko Tambun City RG.08 Jln. Sultan Hasanudin, Tambun Selatan, Bekasi</li>
+								<li><i class="fas fa-phone top-6"></i> <strong>Telepon:</strong> (021) 89528543</li>
 								<li><i class="fas fa-envelope top-6"></i> <strong>Email:</strong> <a href="mailto:info@ptintandayamandiri.co.id">info@ptintandayamandiri.co.id</a></li>
 							</ul>
 							
 						</div>
 						<div class="col-lg-3 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="1000" data-plugin-options="{'accY': -200}">
 
-							<h4 class="pt-5">Business <strong>Hours</strong></h4>
+							<h4 class="pt-5"><strong>Jam Operasional</strong></h4>
 							<ul class="list list-icons list-dark mt-2">
-								<li><i class="far fa-clock top-6"></i> Monday - Friday - 9am to 5pm</li>
-								<li><i class="far fa-clock top-6"></i>Saturday & Sunday - Closed</li>
+								<li><i class="far fa-clock top-6"></i> Senin - Sabtu (09:00 - 17:30)</li>
+								<li><i class="far fa-clock top-6"></i>Sabtu & Minggu - Tutup</li>
 							</ul>
 
 						</div>

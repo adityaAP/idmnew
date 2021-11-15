@@ -3,7 +3,7 @@
 					<div class="container">
 						<div class="row mt-5">
 							<div class="col-md-12 align-self-center p-static order-2 text-center">
-								<h1 class="text-9 font-weight-bold">About Us</h1>
+								<h1 class="text-9 font-weight-bold">Tentang Kami</h1>
 							</div>
 						</div>
 					</div>
@@ -26,17 +26,17 @@
 										</h1>
 									</div>
 									<div class="overflow-hidden mb-3">
-										<p class="lead mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200"> On 14 February 2013, <span style="font-weight:bold;">PT. INTAN DAYA MANDIRI</span> started a business in the
-											transportation and shipping of goods
-											between islands. Starting from PT.
-											Telkom Indonesia, which is our regular
-											customer.
-											Seeing the increasingly diverse business
-											needs, in early 2021 PT Intan Daya
-											Mandiri made internal changes to the
-											company by changing the company's logo
-											and vision and mission to face global
-											challenges.
+										<p class="lead mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200"> Pada 14 Februari 2013, <span style="font-weight:bold;">PT. INTAN DAYA MANDIRI</span> memulai bisnis di
+												transportasi dan pengiriman barang
+												antar pulau. Berawal dari PT.
+												Telkom Indonesia yang menjadi langganan kami
+												pelanggan.
+												Melihat bisnis yang semakin beragam
+												kebutuhan, pada awal tahun 2021 PT Intan Daya
+												Mandiri melakukan perubahan internal pada
+												perusahaan dengan mengubah logo perusahaan
+												dan visi misi menghadapi global
+												tantangan.
 
 										</p>
 									</div>
@@ -45,28 +45,28 @@
 
 							<div class="row mt-3 mb-5">
 								<div class="col-md-4 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="800">
-									<h3 class="font-weight-bold text-4 mb-2">Our Mission</h3>
-									<p>Providing added vale to
-										customers, company owners
-										and employees. Provide the most competitive
-										prices to customers and help
-										complete delivery of good
-										quickly and on time</p>
+									<h3 class="font-weight-bold text-4 mb-2">Misi Kami</h3>
+									<p>Memberikan nilai tambah untuk
+										pelanggan, pemilik perusahaan
+										dan karyawan. Berikan yang paling kompetitif
+										harga kepada pelanggan dan bantuan
+										pengiriman barang lengkap
+										dengan cepat dan tepat waktu</p>
 								</div>
 								<div class="col-md-4 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="600">
-									<h3 class="font-weight-bold text-4 mb-2">Our Vision</h3>
-									<p>To be a trusted business partner that prioritizes integrity and reliable shipping services</p>
+									<h3 class="font-weight-bold text-4 mb-2">Visi Kami</h3>
+									<p>Menjadi mitra bisnis terpercaya yang mengutamakan integritas dan layanan pengiriman yang handal</p>
 								</div>
 								<div class="col-md-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="800">
-									<h3 class="font-weight-bold text-4 mb-2">Why Us</h3>
-									<p>Our management always thinks and puts
-											forward flexibility is our business
-											We really appreciate the commitment that has
-											occurred between us and our customers,
-											therefore we will maintain the time, quality,
-											confidentiality associated with our customers
-											In our hands that means you secure the business
-											you have with your customers</p>
+									<h3 class="font-weight-bold text-4 mb-2">Mengapa Melilih Kami</h3>
+									<p>Manajemen kami selalu berpikir dan menempatkan
+										fleksibilitas ke depan adalah bisnis kami
+										Kami sangat menghargai komitmen yang telah
+										terjadi antara kami dan pelanggan kami,
+										Oleh karena itu kami akan menjaga waktu, kualitas,
+										kerahasiaan yang terkait dengan pelanggan kami
+										Di tangan kami itu berarti Anda mengamankan bisnis
+										Anda miliki dengan pelanggan Anda</p>
 								</div>
 							</div>
 
@@ -79,8 +79,8 @@
 						<div class="row align-items-center justify-content-center">
 							<div class="col-lg-6 pb-sm-4 pb-lg-0 pr-lg-5 mb-sm-5 mb-lg-0">
 								<h2 class="text-color-dark font-weight-normal text-6 mb-2">Who <strong class="font-weight-extra-bold">We Are</strong></h2>
-								<p class="pr-5 mr-5">PT INTAN DAYA MANDIRI is a company engaged in the field of freight forwarding services, we provide a variety of services that are cheap, fast, safe, and reliable
-								The reason for the establishment of PT. Intan Daya Mandiri because she saw the rapid development and economic growth in Indonesia, especially in the field of providing goods delivery transportation services. So, with sincerity and foresight as well as our strong determination in running this company so that it grows and develops positively from year to year, both in terms of acceptance and quality of service.</p>
+								<p class="pr-5 mr-5">PT INTAN DAYA MANDIRI adalah perusahaan yang bergerak di bidang jasa pengiriman barang, kami menyediakan berbagai layanan yang murah, cepat, aman, dan terpercaya
+Alasan berdirinya PT. Intan Daya Mandiri karena melihat pesatnya perkembangan dan pertumbuhan ekonomi di Indonesia khususnya dalam bidang penyediaan jasa transportasi pengiriman barang. Maka dengan keikhlasan dan kejelian serta tekad kuat kami dalam menjalankan perusahaan ini agar tumbuh dan berkembang secara positif dari tahun ke tahun, baik dari segi penerimaan maupun kualitas pelayanan.</p>
 							</div>
 							<div class="col-sm-8 col-md-6 col-lg-4 offset-sm-4 offset-md-4 offset-lg-2 mt-sm-5" style="top: 1.7rem;">
 								<img src="<?=base_url('assets/home/')?>gambar/12.jpg" class="img-fluid position-absolute d-none d-sm-block appear-animation" data-appear-animation="expandIn" data-appear-animation-delay="300" style="top: 10%; left: -50%; width:50%;border-radius:10px;" alt="" />

@@ -23,9 +23,21 @@ class Cetak_berkas
 		$this->_ci->myfpdf->SetFont('Arial','B',50);		
 		$this->_ci->myfpdf->Cell(200,8,'INVOICE',0,0);	
 		$this->_ci->myfpdf->SetFont('Arial','',15);
-		$this->_ci->myfpdf->Cell(60,8,"Mutiara Gading blok E nomor 5Jl",0,1,'R');
-		$this->_ci->myfpdf->Cell(200,8,'',0,0);			
-		$this->_ci->myfpdf->Cell(60,8,'. Ketileng, Klipang, Semarang, Jawa Tengah',0,1,'R');
+
+		if ($this->_ci->session->userdata('rule')=='admin_jkt') {
+			$this->_ci->myfpdf->Cell(60,8,"Ruko Tambun City RG.08 Jln. Sultan Hasanudin,",0,1,'R');			
+		}else{
+			$this->_ci->myfpdf->Cell(60,8,"Mutiara Gading blok E nomor 5Jl",0,1,'R');
+		}
+
+		$this->_ci->myfpdf->Cell(200,8,'',0,0);	
+		
+		if ($this->_ci->session->userdata('rule')=='admin_jkt') {
+			$this->_ci->myfpdf->Cell(60,8,'. Tambun Selatan, Bekasi',0,1,'R');
+		}else{
+			$this->_ci->myfpdf->Cell(60,8,'. Ketileng, Klipang, Semarang, Jawa Tengah',0,1,'R');
+		}
+
 		$this->_ci->myfpdf->Cell(200,8,'',0,0);			
 		$this->_ci->myfpdf->Cell(60,8,'50272',0,1,'R');
 		$this->_ci->myfpdf->ln();

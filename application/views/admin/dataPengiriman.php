@@ -36,6 +36,7 @@
                 <thead>
                 <tr>
                   <th>No</th>
+                  <th width="150px">Aksi</th>
                   <th>Nama Customer</th>
                   <th>Nomor PO</th>
                   <th>Jangka Waktu</th>
@@ -48,7 +49,6 @@
                   <th>Jumlah Barang</th>
                   <th>Nilai Invoice</th>
                   <th>Status Pengiriman</th>
-                  <th width="150px">Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -59,6 +59,11 @@
                       ?>
                   <tr>
                     <td><?=$no++;?></td>
+                    <td>
+                      <a href="<?=site_url('admin/editpengiriman?id='.$data['id'].'')?>" class="btn btn-xs btn-info">Edit</a>
+                      <a href="<?=site_url('admin/edit_status_pengiriman?id='.$data['id'].'')?>" class="btn btn-xs btn-warning">Status Pengiriman</a>
+                      <a href="<?=site_url('admin/hapuspengiriman?id='.$data['id'].'')?>" class="btn btn-xs btn-danger" onclick="return cek_delete()">Hapus</a>
+                    </td>
                     <td><?=$this->kode_converter->customer($data['id_customer'])?></td>
                     <td><?=$data['no_po']?></td>
                     <td><?=$data['jangka_waktu']?></td>
@@ -71,11 +76,7 @@
                     <td><?=$data['jumlah_barang']?></td>
                     <td>Rp <?=number_format($data['nilai_inv'],2,',','.');?></td>
                     <td><?=$data['status_pengiriman']?></td>
-                    <td>
-                      <a href="<?=site_url('admin/editpengiriman?id='.$data['id'].'')?>" class="btn btn-xs btn-info">Edit</a>
-                      <a href="<?=site_url('admin/edit_status_pengiriman?id='.$data['id'].'')?>" class="btn btn-xs btn-warning">Status Pengiriman</a>
-                      <a href="<?=site_url('admin/hapuspengiriman?id='.$data['id'].'')?>" class="btn btn-xs btn-danger" onclick="return cek_delete()">Hapus</a>
-                    </td>
+                    
 
                   </tr>
               <?php }} ?>

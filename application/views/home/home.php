@@ -361,7 +361,7 @@
 								<div class="owl-carousel owl-theme mb-0" data-plugin-options="{'items': 4, 'margin': 35, 'loop': false}">
 				
 									<div class="portfolio-item">
-										<a href="ajax/portfolio-ajax-project.html" data-ajax-on-modal>
+										<a href="#" data-ajax-on-modal>
 											<span class="thumb-info thumb-info-lighten">
 												<span class="thumb-info-wrapper">
 													<img src="<?=base_url('assets/home/')?>gambar/client/kia.jpg" class="img-fluid border-radius-0" alt="">
@@ -371,7 +371,7 @@
 									</div>
 
 									<div class="portfolio-item">
-										<a href="ajax/portfolio-ajax-project-2.html" data-ajax-on-modal>
+										<a href="#" data-ajax-on-modal>
 											<span class="thumb-info thumb-info-lighten">
 												<span class="thumb-info-wrapper">
 													<img src="<?=base_url('assets/home/')?>gambar/client/telkom.jpg" class="img-fluid border-radius-0" alt="">
@@ -380,7 +380,7 @@
 										</a>
 									</div>
 									<div class="portfolio-item">
-										<a href="ajax/portfolio-ajax-project-2.html" data-ajax-on-modal>
+										<a href="#" data-ajax-on-modal>
 											<span class="thumb-info thumb-info-lighten">
 												<span class="thumb-info-wrapper">
 													<img src="<?=base_url('assets/home/')?>gambar/client/jateng.jpg" class="img-fluid border-radius-0" alt="">
@@ -389,7 +389,7 @@
 										</a>
 									</div>
 									<div class="portfolio-item">
-										<a href="ajax/portfolio-ajax-project-2.html" data-ajax-on-modal>
+										<a href="#" data-ajax-on-modal>
 											<span class="thumb-info thumb-info-lighten">
 												<span class="thumb-info-wrapper">
 													<img src="<?=base_url('assets/home/')?>gambar/client/garuda.jpg" class="img-fluid border-radius-0" alt="">

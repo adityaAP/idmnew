@@ -35,6 +35,7 @@ class Model_admin extends CI_Model {
     public function dataPengirimanByid($id=null)
     {
         // $this->db->join('tb_customer','tb_pengiriman.id_customer=tb_customer.id_cust');
+        
         $this->db->where('id',$id);
         $query = $this->db->get('tb_pengiriman');
         if ($query->num_rows()>0)   
@@ -107,7 +108,9 @@ class Model_admin extends CI_Model {
     }    
     public function dataPengiriman()
     {
-      
+        if ($this->session->userdata('rule')=='admin_jkt') {
+            $this->db->where('created_by',$this->sessio->userdata('user_id'));
+        }
         $query = $this->db->get('tb_pengiriman');
         if ($query->num_rows()>0)   
         {
@@ -329,6 +332,9 @@ class Model_admin extends CI_Model {
     }    
     public function get_data_invoice()
     {
+        if ($this->session->userdata('rule')=='admin_jkt') {
+            $this->db->where('created_by',$this->sessio->userdata('user_id'));
+        }
         $query = $this->db->get('tb_invoice');
         if ($query->num_rows()>0)   
         {

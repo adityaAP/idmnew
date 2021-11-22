@@ -86,8 +86,12 @@
                     <td><?=$data['nama_barang']?></td>
                     <td><?=$data['harga_barang']?></td>
                     <td>
-                      <a href="<?=site_url('admin/edit_barang?id='.$data['id_barang'].'')?>" class="btn btn-sm btn-info">Edit</a>
-                      <a href="<?=site_url('admin/hapus_barang?id='.$data['id_barang'].'')?>" class="btn btn-sm btn-danger" onclick="return cek_delete()">Hapus</a>
+                      <?php if ($this->session->userdata('rule')!='admin_jkt') { ?>                      
+                        <a href="<?=site_url('admin/edit_barang?id='.$data['id_barang'].'')?>" class="btn btn-sm btn-info">Edit</a>
+                        <a href="<?=site_url('admin/hapus_barang?id='.$data['id_barang'].'')?>" class="btn btn-sm btn-danger" onclick="return cek_delete()">Hapus</a>
+                      <?php } ?>
+
+                     
                     </td>
 
                   </tr>

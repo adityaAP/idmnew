@@ -10,14 +10,13 @@ class Model_admin_proses extends CI_Model {
     public function tambahadmin()
     {
         $pass = md5($this->input->post('password'));
-        $rule = "admin";
         $status = "aktif";
         $data = array(
             'email'     => $this->input->post('email'), 
             'nama'      => $this->input->post('nama'), 
             'telp'      => $this->input->post('telp'),
             'password'  => $pass, 
-            'rule'      => $rule, 
+            'rule'      => $this->input->post('rule'), 
             'status'    => $status, 
         );
         $query = $this->db->insert('tb_user',$data);

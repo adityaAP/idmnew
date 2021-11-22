@@ -51,6 +51,15 @@
                         </div>
                       </div>
                       <?php } ?>
+                      <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">Posisi</label>
+                        <div class="col-sm-8">
+                          <select class="form-control" name="rule">
+                            <option value="admin_smg">Admin Semarang</option>
+                            <option value="admin_jkt">Admin Jakarta</option>
+                          </select>
+                        </div>
+                      </div> 
                       <br><hr>                       
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Nama Lengkap</label>

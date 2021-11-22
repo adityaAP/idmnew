@@ -58,8 +58,10 @@
                     <td><?=$this->kode_converter->armada($data['armada'])?></td>
                     <td>Rp <?=number_format($data['harga'],2,',','.');?></td>
                     <td>
+                    <?php if ($this->session->userdata('rule')!='admin_jkt') { ?>
                       <a href="<?=site_url('admin/edit_harga_vendor?id='.$data['id_harga'].'&&id_vendor='.$data['id_vendor'].'')?>" class="btn btn-sm btn-info">Edit</a>
                       <a href="<?=site_url('admin/hapus_harga_vendor?id='.$data['id_harga'].'&&id_vendor='.$data['id_vendor'].'')?>" class="btn btn-sm btn-danger" onclick="return cek_delete()">Hapus</a>
+                    <?php } ?>
                     </td>
 
                   </tr>

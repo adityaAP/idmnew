@@ -34,11 +34,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <style type="text/css">
-    .jeda {
-      margin:5px;
-    }
-  </style>
 </head>
 <body class="hold-transition sidebar-mini">
 
@@ -148,6 +143,7 @@ setTimeout(function(){$("#notifikasi").html('');}, 3000);
               </p>
             </a>
           </li>  
+          <?php if ($this->session->userdata('rule')!='admin2') { ?>
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
@@ -157,14 +153,12 @@ setTimeout(function(){$("#notifikasi").html('');}, 3000);
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <?php if ($this->session->userdata('rule')!='admin_jkt') { ?>
               <li class="nav-item">
                 <a href="<?=site_url('admin/data_admin')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Admin</p>
                 </a>
               </li>
-              <?php } ?>
               <li class="nav-item">
                 <a href="<?=site_url('admin/datakota')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -213,6 +207,32 @@ setTimeout(function(){$("#notifikasi").html('');}, 3000);
               </p>
             </a>
           </li> 
+          <?php } ?>  
+          <?php if ($this->session->userdata('rule')=='admin2') { ?>
+        <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                ADMIN
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?=site_url('admin/data_vendor')?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Vendor</p>
+                </a>
+              </li>              
+              <li class="nav-item">
+                <a href="<?=site_url('admin/data_armada')?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Armada</p>
+                </a>
+              </li>              
+            </ul>
+          </li>
+          <?php } ?>           
           <li class="nav-item">
             <a href="<?=site_url('admin/data_pengirim_vendor')?>" class="nav-link">
               <i class="nav-icon fas fa-list"></i>

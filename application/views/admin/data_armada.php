@@ -91,8 +91,10 @@
                     <td><?=$this->kode_converter->vendor($data['id_vendor'])?></td>
                     <td><?=$data['jenis_armada']?></td>
                     <td>
+                    <?php if ($this->session->userdata('rule')!='admin_jkt') { ?>
                       <a href="<?=site_url('admin/edit_armada?id='.$data['id_armada'].'')?>" class="btn btn-sm btn-info">Edit</a>
-                      <a href="<?=site_url('admin/hapus_armada?id='.$data['id_armada'].'')?>" class="btn btn-sm btn-danger" onclick="return cek_delete()">Hapus</a>
+                      <a href="<?=site_url('admin/hapus_armada?id='.$data['id_armada'].'')?>" class="btn btn-sm btn-danger" onclick="return cek_delete()">Hapus</a>                      
+                    <?php } ?>
                     </td>
 
                   </tr>

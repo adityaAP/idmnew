@@ -58,9 +58,11 @@
                     <td><?=$data['email_vendor']?></td>
                     <td><?=$data['telp_vendor']?></td>
                     <td>
+                    <?php if ($this->session->userdata('rule')!='admin_jkt') { ?>
                       <a href="<?=site_url('admin/edit_vendor?id='.$data['id_vendor'].'')?>" class="btn btn-sm btn-info">Edit</a>
-                      <a href="<?=site_url('admin/harga_vendor?id='.$data['id_vendor'].'')?>" class="btn btn-sm btn-warning">Harga Vendor</a>
                       <a href="<?=site_url('admin/hapus_vendor?id='.$data['id_vendor'].'')?>" class="btn btn-sm btn-danger" onclick="return cek_delete()">Hapus</a>
+                    <?php } ?>
+                      <a href="<?=site_url('admin/harga_vendor?id='.$data['id_vendor'].'')?>" class="btn btn-sm btn-warning">Harga Vendor</a>
                     </td>
 
                   </tr>

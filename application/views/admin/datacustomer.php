@@ -56,8 +56,11 @@
                     <td><?=$data['email_cust']?></td>
                     <td><?=$data['telp_cust']?></td>
                     <td>
+                    <?php if ($this->session->userdata('rule')!='admin_jkt') { ?>
                       <a href="<?=site_url('admin/edit_cust?id='.$data['id_cust'].'')?>" class="btn btn-sm btn-info">Edit</a>
                       <a href="<?=site_url('admin/hapus_cust?id='.$data['id_cust'].'')?>" class="btn btn-sm btn-danger" onclick="return cek_delete()">Hapus</a>
+                    <?php } ?>
+                      
                     </td>
 
                   </tr>

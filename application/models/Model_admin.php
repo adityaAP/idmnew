@@ -45,6 +45,19 @@ class Model_admin extends CI_Model {
             
             return $hasil;
         }
+    }  
+
+    public function riwayat_status_pengiriman($id=null)
+    {
+        $this->db->where('idpeng',$id);
+        $query = $this->db->get('riwayat_pengiriman');
+        if ($query->num_rows()>0)   
+        {
+            foreach ($query->result_array() as $row)
+            { $hasil[]=$row ; }
+            
+            return $hasil;
+        }
     }      
     public function get_data_pengiriman_bynopo($nopo=null)
     {
@@ -109,9 +122,54 @@ class Model_admin extends CI_Model {
     public function dataPengiriman()
     {
         if ($this->session->userdata('rule')=='admin_jkt') {
-            $this->db->where('created_by',$this->sessio->userdata('user_id'));
+            $this->db->where('created_by',$this->session->userdata('user_id'));
         }
         $query = $this->db->get('tb_pengiriman');
+        if ($query->num_rows()>0)   
+        {
+            foreach ($query->result_array() as $row)
+            { $hasil[]=$row ; }
+            
+            return $hasil;
+        }
+    }
+    public function VerifdataPengiriman()
+    {
+        if ($this->session->userdata('rule')=='admin_jkt') {
+            $this->db->where('created_by',$this->session->userdata('user_id'));
+        }
+        $this->db->where('verif','baru');
+        $query = $this->db->get('tb_pengiriman');
+        if ($query->num_rows()>0)   
+        {
+            foreach ($query->result_array() as $row)
+            { $hasil[]=$row ; }
+            
+            return $hasil;
+        }
+    }
+    public function Verifsuratjalan()
+    {
+        if ($this->session->userdata('rule')=='admin_jkt') {
+            $this->db->where('created_by',$this->session->userdata('user_id'));
+        }
+        $this->db->where('verif','baru');
+        $query = $this->db->get('surat_jalan');
+        if ($query->num_rows()>0)   
+        {
+            foreach ($query->result_array() as $row)
+            { $hasil[]=$row ; }
+            
+            return $hasil;
+        }
+    } 
+    public function Verifinvoice()
+    {
+        if ($this->session->userdata('rule')=='admin_jkt') {
+            $this->db->where('created_by',$this->session->userdata('user_id'));
+        }
+        $this->db->where('verif','baru');
+        $query = $this->db->get('tb_invoice');
         if ($query->num_rows()>0)   
         {
             foreach ($query->result_array() as $row)
@@ -208,8 +266,6 @@ class Model_admin extends CI_Model {
     }     
     public function get_data_armada_join_vendor()
     {
-        $this->db->join('tb_vendor','tb_armada.id_vendor=tb_vendor.id_vendor');
-        $this->db->order_by('tb_armada.id_vendor');
         $query = $this->db->get('tb_armada');
         if ($query->num_rows()>0)   
         {
@@ -256,6 +312,9 @@ class Model_admin extends CI_Model {
     }  
     public function get_data_pengirim_vendor()
     {
+        if ($this->session->userdata('rule')=='admin_jkt') {
+            $this->db->where('created_by',$this->session->userdata('user_id'));
+        }
         $query = $this->db->get('tb_pengirim_vendor');
         if ($query->num_rows()>0)   
         {
@@ -303,9 +362,9 @@ class Model_admin extends CI_Model {
     }
     public function get_data_armada_join_vendorbyvendor($id=null)
     {
-        $this->db->where('tb_armada.id_vendor',$id); 
-        $this->db->join('tb_vendor','tb_armada.id_vendor=tb_vendor.id_vendor');
-        $query = $this->db->get('tb_armada');
+        $this->db->where('tb_harga_vendor.id_vendor',$id);
+        $this->db->join('tb_armada','tb_harga_vendor.armada=tb_armada.id_armada');
+        $query = $this->db->get('tb_harga_vendor');
         if ($query->num_rows()>0)   
         {
             foreach ($query->result_array() as $row)
@@ -333,7 +392,7 @@ class Model_admin extends CI_Model {
     public function get_data_invoice()
     {
         if ($this->session->userdata('rule')=='admin_jkt') {
-            $this->db->where('created_by',$this->sessio->userdata('user_id'));
+            $this->db->where('created_by',$this->session->userdata('user_id'));
         }
         $query = $this->db->get('tb_invoice');
         if ($query->num_rows()>0)   
@@ -355,5 +414,51 @@ class Model_admin extends CI_Model {
             
             return $hasil;
         }
-    }   
+    }  
+
+     public function data_surat_jalan()
+    {
+        if ($this->session->userdata('rule')=='admin_jkt') {
+            $this->db->where('user_id',$this->session->userdata('user_id'));
+        }
+        $query = $this->db->get('surat_jalan');
+        if ($query->num_rows()>0)   
+        {
+            foreach ($query->result_array() as $row)
+            { $hasil[]=$row ; }
+            
+            return $hasil;
+        }
+    } 
+    public function data_surat_jalanByid($id=null)
+    {
+        $this->db->where('id_sj',$id);
+        $query = $this->db->get('surat_jalan');
+        if ($query->num_rows()>0)   
+        {
+            foreach ($query->result_array() as $row)
+            { $hasil=$row ; }
+            
+            return $hasil;
+        }
+    } 
+
+    public function totalverifpengiriman()
+    {
+        $this->db->where('verif','baru');
+        $q = $this->db->get("tb_pengiriman");
+        return $q->num_rows();
+    }  
+    public function totalverifinvoice()
+    {
+        $this->db->where('verif','baru');
+        $q = $this->db->get("tb_invoice");
+        return $q->num_rows();
+    }
+    public function totalsuratjalan()
+    {
+        $this->db->where('verif','baru');
+        $q = $this->db->get("surat_jalan");
+        return $q->num_rows();
+    }
 }

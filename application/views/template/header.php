@@ -10,7 +10,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
   <title>Intan Daya Mandiri</title>
-    <link rel="icon" href="<?=base_url('assets/logo/favicon.ico')?>">
+  <link rel="icon" href="<?=base_url('assets/logo/idm.png')?>">
+  <meta name="robots" content="index,follow"/>
+  <meta name="description" content="PT INTAN DAYA MANDIRI adalah perusahaan yang bergerak di bidang jasa pengiriman barang, kami menyediakan berbagai layanan yang murah, cepat, aman, dan terpercaya"/>
+<meta name="keywords" content="skincare, skin care, beauty in the pot, pembersih wajah, pemutih wajah, glowing, serum, paket skincare"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="PT Intan Daya Mandiri Your Business Partner"/>
+<meta property="og:url" content="https://ptintandayamandiri.co.id/"/>
+<meta property="og:title" content="PT Intan Daya Mandiri Your Business Partner"/>
+<meta property="og:description" content="PT INTAN DAYA MANDIRI adalah perusahaan yang bergerak di bidang jasa pengiriman barang, kami menyediakan berbagai layanan yang murah, cepat, aman, dan terpercaya"/>
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="<?=base_url('assets/admin/plugins/fontawesome-free/css/all.min.css')?>">
   <!-- Ionicons -->
@@ -26,9 +34,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Theme style -->
   <link rel="stylesheet" href="<?=base_url('assets/admin/dist/css/adminlte.min.css')?>">
   <!-- Select2 -->
-  <link rel="stylesheet" href="<?=base_url('assets/admin/plugins/select2/css/select2.min.cs')?>s">
+  <link rel="stylesheet" href="<?=base_url('assets/admin/plugins/select2/css/select2.min.cs')?>">
   <link rel="stylesheet" href="<?=base_url('assets/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')?>">
 
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" />
 
@@ -148,60 +157,96 @@ setTimeout(function(){$("#notifikasi").html('');}, 3000);
               </p>
             </a>
           </li>  
-        <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                ADMIN
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <?php if ($this->session->userdata('rule')!='admin_jkt') { ?>
+        
+          <?php if ($this->session->userdata('rule')!='admin_jkt') { ?>
+          <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                  SETTING ADMIN
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <?php if ($this->session->userdata('rule')=='superadmin'||$this->session->userdata('rule')=='admin_smg') { ?>
+                <li class="nav-item">
+                  <a href="<?=site_url('admin/data_admin')?>" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Admin</p>
+                  </a>
+                </li>
+                <?php } ?>
+                <li class="nav-item">
+                  <a href="<?=site_url('admin/datakota')?>" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Kota</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?=site_url('admin/data_customer')?>" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Customer</p>
+                  </a>
+                </li>              
+                <li class="nav-item">
+                  <a href="<?=site_url('admin/data_vendor')?>" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Vendor</p>
+                  </a>
+                </li>              
+                <li class="nav-item">
+                  <a href="<?=site_url('admin/data_armada')?>" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Armada</p>
+                  </a>
+                </li>              
+              </ul>
+            </li>    
+
+            <li class="nav-header">VERIFIKASI</li>
               <li class="nav-item">
-                <a href="<?=site_url('admin/data_admin')?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Admin</p>
+                <a href="<?=site_url('verif/datapengiriman')?>" class="nav-link">
+                  <i class="nav-icon fas fa-list"></i>
+                  <p>
+                    Pengiriman
+                    <span class="badge badge-info right"><?=$ttlp?></span>
+                  </p>
                 </a>
-              </li>
-              <?php } ?>
+              </li> 
               <li class="nav-item">
-                <a href="<?=site_url('admin/datakota')?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Kota</p>
+                <a href="<?=site_url('verif/invoice')?>" class="nav-link">
+                  <i class="nav-icon fas fa-list"></i>
+                  <p>
+                    Invoice
+                    <span class="badge badge-info right"><?=$ttlv?></span>
+                  </p>
                 </a>
-              </li>
+              </li> 
               <li class="nav-item">
-                <a href="<?=site_url('admin/data_customer')?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Customer</p>
+                <a href="<?=site_url('verif/suratjalan')?>" class="nav-link">
+                  <i class="nav-icon fas fa-list"></i>
+                  <p>
+                    Surat Jalan
+                    <span class="badge badge-info right"><?=$ttls?></span>
+                  </p>
                 </a>
-              </li>              
-              <li class="nav-item">
-                <a href="<?=site_url('admin/data_vendor')?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Vendor</p>
-                </a>
-              </li>              
-              <li class="nav-item">
-                <a href="<?=site_url('admin/data_armada')?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Armada</p>
-                </a>
-              </li>              
-              <li class="nav-item">
-                <a href="<?=site_url('admin/data_barang')?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Barang</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+              </li> 
+
+          <?php } ?>
+          <li class="nav-header">DATA PENGIRIMAN</li>
           <li class="nav-item">
             <a href="<?=site_url('admin/datapengiriman')?>" class="nav-link">
               <i class="nav-icon fas fa-list"></i>
               <p>
                 Data Pengiriman
+              </p>
+            </a>
+          </li> 
+          <li class="nav-item">
+            <a href="<?=site_url('admin/suratjalan')?>" class="nav-link">
+              <i class="nav-icon fas fa-list"></i>
+              <p>
+                Data Surat jalan
               </p>
             </a>
           </li>          

@@ -1,7 +1,9 @@
 <style type="text/css">
 	.slider-container .tp-opacity-overlay {
-	background-image: linear-gradient(to right,#804609,#a86e14,#c78a2d);
-	opacity: 0.9;
+	/*background-image: linear-gradient(to right,#ff9900,#f2a127,#ff9900);*/
+	/*background-color: #ff9900;*/
+	background-color: none;
+	opacity: 0.8;
 }
 </style>
 	<div role="main" class="main">
@@ -29,12 +31,13 @@
 									data-autoplayonlyfirsttime="false" 
 									data-nextslideatend="false">
 								</div>
-								<div class="tp-caption font-weight-extra-bold text-color-light negative-ls-2"
+								
+									<div class="tp-caption font-weight-extra-bold text-color-light negative-ls-2"
 									data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
 									data-x="center"
 									data-y="center"
 									data-fontsize="['50','50','50','90']"
-									data-lineheight="['55','55','55','95']" style="z-index: 5;">PT. INTAN DAYA MANDIRI</div>
+									data-lineheight="['55','55','55','95']" style="z-index: 5;"><font style="color:blue;">PT. INTAN DAYA MANDIRI</font></div>
 
 								<div class="tp-caption font-weight-bold"
 									data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":2000,"split":"chars","splitdelay":0.05,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
@@ -42,7 +45,7 @@
 									data-y="center" data-voffset="['40','40','40','80']"
 									data-fontsize="['18','18','18','50']"
 									data-lineheight="['20','20','20','55']"
-									style="color: #b5b5b5; z-index: 5;">YOUR BUSINESS PARTNER</div>
+									style="color: #b5b5b5;z-index: 5;"><font style="font-size:18px;color:white;">YOUR BUSINESS PARTNER</font></div>
 								
 								<a class="tp-caption slider-scroll-button"
 									data-hash

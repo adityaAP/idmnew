@@ -14,7 +14,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Data Pengiriman Barang</li>
+              <li class="breadcrumb-item active">Verifikasi Data Pengiriman Barang</li>
             </ol>
           </div>
         </div>
@@ -25,11 +25,8 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Data Pengiriman Barang</h3>
-            </div>
-            <div class="card-header">
-              <a href="<?=site_url('admin/tambahpengiriman')?>" class="btn btn-primary">Tambah Pengiriman</a>
-            </div>     
+              <h3 class="card-title">Verifikasi Data Pengiriman Barang</h3>
+            </div>   
             <!-- /.card-header -->
             <div class="card-body" style="overflow-x: scroll;">
               <table style="overflow-x: scroll;" id="example1" class="table table-bordered table-striped" >
@@ -37,7 +34,6 @@
                 <tr>
                   <th>No</th>
                   <th width="150px">Aksi</th>
-                  <th>Status</th>
                   <th>Nama Customer</th>
                   <th>Nomor PO</th>
                   <th>Jangka Waktu</th>
@@ -60,18 +56,8 @@
                   <tr>
                     <td><?=$no++;?></td>
                     <td>
-                      <a href="<?=site_url('admin/status_pengiriman?id='.$data['id'].'')?>" class="btn btn-xs btn-warning">Status Pengiriman</a>
-                      <?php if ($this->session->userdata('rule')=='superadmin'||$this->session->userdata('rule')=='admin_smg') { ?>
-                        <a href="<?=site_url('admin/editpengiriman?id='.$data['id'].'')?>" class="btn btn-xs btn-info">Edit</a>
-                        <a href="<?=site_url('admin/hapuspengiriman?id='.$data['id'].'')?>" class="btn btn-xs btn-danger" onclick="return cek_delete()">Hapus</a>
-                      <?php } ?>
-                      
+                      <a href="<?=site_url('verif/verifikasiProses?id='.$data['id'].'')?>" class="btn btn-xs btn-info">Verifikasi</a>
                     </td>
-                    <td><?php if ($data['verif']=='baru') {
-                      echo "<font color='red'>Menunggu Verifikasi</font>";
-                    }else{
-                      echo "<font color='green'>Sudah Terverifikasi</font>";
-                    } ?></td>
                     <td><?=$this->kode_converter->customer($data['id_customer'])?></td>
                     <td><?=$data['no_po']?></td>
                     <td><?=$data['jangka_waktu']?></td>

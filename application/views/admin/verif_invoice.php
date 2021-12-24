@@ -40,7 +40,6 @@
                 <tr>
                   <th>No</th>
                   <th width="150px">Aksi</th> 
-                  <th>Verifikasi</th>
                   <th>Status</th>
                   <th>Nama Customer</th>
                   <th>Nomor Invoice</th>
@@ -62,21 +61,8 @@
                   <tr>
                     <td><?=$no++;?></td>
                     <td>
-                      <?php if ($this->session->userdata('rule')=='superadmin'||$this->session->userdata('rule')=='admin_smg') { ?>
-                          <a href="<?=site_url('admin/edit_invoice?id='.$data['id_inv'].'')?>" class="btn btn-sm btn-info">Edit</a>
-                          <a href="<?=site_url('admin/hapus_invoice?id='.$data['id_inv'].'')?>" class="btn btn-sm btn-danger" onclick="return cek_delete()">Hapus</a>  
-                        <?php if ($data['status_inv'] == 'LUNAS') { ?>
-                        <a href="<?=site_url('admin/batal_lunas_invoice?id='.$data['id_inv'].'')?>" class="btn btn-sm btn-warning">Batalkan Lunas</a>                      
-                        <?php }else{ ?>
-                        <a href="<?=site_url('admin/lunas_invoice?id='.$data['id_inv'].'')?>" class="btn btn-sm btn-warning" onclick="return cek_lunas()">Lunas</a>
-                        <?php } ?>                         
-                      <?php } ?>
+                      <a href="<?=site_url('verif/verifikasiInvoiceProses?id='.$data['id_inv'].'')?>" class="btn btn-xs btn-info">Verifikasi</a>
                     </td>
-                    <td><?php if ($data['verif']=='baru') {
-                      echo "<font color='red'>Menunggu Verifikasi</font>";
-                    }else{
-                      echo "<font color='green'>Sudah Terverifikasi</font>";
-                    } ?></td>
                     <?php if ($data['status_inv']=='LUNAS') { ?>
                       <td style="background-color:#136BD4;color:white;text-align:center;"><b>LUNAS</b></td>
                     <?php }else{ if ($skg <= $jatuhtempo) { ?>

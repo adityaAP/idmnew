@@ -5508,11 +5508,7 @@ html .call-to-action.call-to-action-light p {
 	color: #777;
 }
 
-section.timeline .timeline-box.left:before,
-section.timeline .timeline-box.right:before {
-	background: #0088CC;
-	box-shadow: 0 0 0 3px #FFF, 0 0 0 6px #0088CC;
-}
+
 
 ul.history li .featured-box .box-content {
 	border-top-color: #0088CC;

@@ -1,8 +1,5 @@
 			<footer id="footer" class="mt-0" style="background-color: #c78a2d;border-top: 4px solid #63400a;">
 				<div class="container">
-					<div class="footer-ribbon">
-						<span>Get in Touch</span>
-					</div>
 					<div class="row py-5 my-4">
 						<div class="col-md-6 mb-4 mb-lg-0">
 							<a href="index.html" class="logo pr-0 pr-lg-3">

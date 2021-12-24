@@ -56,7 +56,7 @@
                             <select class="form-control" name="armada">
                               <option>-- Pilih Armada -- </option>
                               <?php if ($armada!='') { foreach ($armada as $value) { ?>
-                                <option <?=isset($harga)&&$harga['armada']==$value['id_armada']?"selected":''; ?> value="<?=$value['id_armada']?>"><?=$value['nama_vendor']?> - <?=$value['jenis_armada']?></option>
+                                <option <?=isset($harga)&&$harga['armada']==$value['id_armada']?"selected":''; ?> value="<?=$value['id_armada']?>"><?=$value['jenis_armada']?></option>
                               <?php }} ?>
                             </select>
                         </div>

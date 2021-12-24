@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
 
-	public function __construct()
+	function __construct()
 	{
 		parent::__construct();
 		if (!$this->session->userdata('logged_in')!==FALSE) {
@@ -12,6 +12,9 @@ class Admin extends CI_Controller {
 		$this->load->model('model_admin');	
 		$this->load->model('model_admin_proses');	
 		// $this->output->enable_profiler(TRUE);
+		$this->data['ttlp'] = $this->model_admin->totalverifpengiriman();
+		$this->data['ttlv'] = $this->model_admin->totalverifinvoice();
+		$this->data['ttls'] = $this->model_admin->totalsuratjalan();		
 	}
 	
 	public function index()
@@ -22,6 +25,11 @@ class Admin extends CI_Controller {
 	public function data_admin()
 	{
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+		$data['ttls'] = $this->data['ttls'];
+
+
 		$data['admin'] = $this->model_admin->getdataadmin();
 		$this->load->view('template/header',$data);
 		$this->load->view('admin/dataadmin',$data);
@@ -42,6 +50,9 @@ class Admin extends CI_Controller {
 	public function profile()
 	{
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$id=$this->input->get('id');
 		$data['admin'] = $this->model_admin->getdataadminbyid($id);
 		if ($this->input->post()) {
@@ -62,6 +73,9 @@ class Admin extends CI_Controller {
 	public function ganti_password()
 	{
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$id=$this->input->get('id');
 		$data['admin'] = $this->model_admin->getdataadminbyid($id);
 		if ($this->input->post()) {
@@ -81,6 +95,9 @@ class Admin extends CI_Controller {
 	public function tambahadmin()
 	{
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		if ($this->input->post()) {
 			if ($this->model_admin_proses->tambahadmin()) {
 				    $this->session->set_flashdata('Admin',TRUE);
@@ -97,6 +114,10 @@ class Admin extends CI_Controller {
 	}	
 	public function editadmin()
 	{
+		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$id = $this->input->get('id');
 		$data['admin'] = $this->model_admin->getUserByID($id);
 		if ($this->input->post()) {
@@ -117,8 +138,11 @@ class Admin extends CI_Controller {
 	public function datapengiriman()
 	{
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$data['pengiriman'] = $this->model_admin->dataPengiriman();
-		$this->load->view('template/header');
+		$this->load->view('template/header',$data);
 		$this->load->view('admin/dataPengiriman',$data);
 		$this->load->view('template/footer');			
 	}
@@ -126,6 +150,10 @@ class Admin extends CI_Controller {
 	public function tambahpengiriman()
 	{
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
+
 		$data['kota'] 		= $this->model_admin->datakota();
 		$data['cust'] 		= $this->model_admin->getdatacustomer();
 		$data['vendor'] 	= $this->model_admin->get_data_vendor();
@@ -141,7 +169,7 @@ class Admin extends CI_Controller {
                     $this->session->set_flashdata('danger','Tambah Pengiriman gagal');				
 			}			
 		}
-		$this->load->view('template/header');
+		$this->load->view('template/header',$data);
 		$this->load->view('admin/tambahpengiriman',$data);
 		$this->load->view('template/footer');
 
@@ -149,45 +177,60 @@ class Admin extends CI_Controller {
 
 	public function editpengiriman()
 	{
-		$id = $this->input->get('id');
-		$data['kota'] 		= $this->model_admin->datakota();
-		$data['cust'] 		= $this->model_admin->getdatacustomer();
-		$data['vendor'] 	= $this->model_admin->get_data_vendor();
-		$data['armada'] 	= $this->model_admin->get_data_armada_join_vendor();
-		$data['barang'] 	= $this->model_admin->getdatabarang();		
-		$data['pengiriman'] = $this->model_admin->dataPengirimanByid($id);
-		if ($this->input->post()) {
-			if ($this->model_admin_proses->editpengiriman($id)) {
-				    $this->session->set_flashdata('Kota',TRUE);
-                    $this->session->set_flashdata('success','Tambah Pengiriman Berhasil');
-                    redirect('admin/datapengiriman');
-			}else{
-				    $this->session->set_flashdata('Kota',TRUE);
-                    $this->session->set_flashdata('danger','Tambah Pengiriman gagal');				
+		if ($this->session->userdata('rule')=='admin_jkt') {
+			redirect('page/aksesdenied');
+		}else{
+			$data = [];
+			$data['ttlp'] = $this->data['ttlp'];
+			$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
+			$id = $this->input->get('id');
+			$data['kota'] 		= $this->model_admin->datakota();
+			$data['cust'] 		= $this->model_admin->getdatacustomer();
+			$data['vendor'] 	= $this->model_admin->get_data_vendor();
+			$data['armada'] 	= $this->model_admin->get_data_armada_join_vendor();
+			$data['barang'] 	= $this->model_admin->getdatabarang();		
+			$data['pengiriman'] = $this->model_admin->dataPengirimanByid($id);
+			if ($this->input->post()) {
+				if ($this->model_admin_proses->editpengiriman($id)) {
+					    $this->session->set_flashdata('Kota',TRUE);
+	                    $this->session->set_flashdata('success','Tambah Pengiriman Berhasil');
+	                    redirect('admin/datapengiriman');
+				}else{
+					    $this->session->set_flashdata('Kota',TRUE);
+	                    $this->session->set_flashdata('danger','Tambah Pengiriman gagal');				
+				}
 			}
+			$this->load->view('template/header',$data);
+			$this->load->view('admin/tambahpengiriman',$data);
+			$this->load->view('template/footer');				
 		}
-		$this->load->view('template/header');
-		$this->load->view('admin/tambahpengiriman',$data);
-		$this->load->view('template/footer');		
 	}
 
 
 	public function dashboard()
 	{
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$data['totalpengiriman']	= $this->model_admin->totalpengiriman();
 		$data['totalcustomer'] 		= $this->model_admin->totalcustomer();
 		$data['totalkota'] 			= $this->model_admin->totalkota();
 		$data['totalbarang'] 		= $this->model_admin->totalbarang();
 		$data['totalvendor'] 		= $this->model_admin->totalvendor();
 		$data['totalarmada'] 		= $this->model_admin->totalarmada();
-		$this->load->view('template/header');
+		$this->load->view('template/header',$data);
 		$this->load->view('admin/dashboard',$data);
 		$this->load->view('template/footer');	
 	}
 
 	public function datakota()
 	{
+		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$data['kota'] = $this->model_admin->datakota();
 		if ($this->input->post()) {
 			if ($this->model_admin_proses->tambahkota()) {
@@ -199,14 +242,19 @@ class Admin extends CI_Controller {
                     $this->session->set_flashdata('danger','Tambah Kota gagal');				
 			}
 		}
-		$this->load->view('template/header');
+		$this->load->view('template/header',$data);
 		$this->load->view('admin/datakota',$data);
 		$this->load->view('template/footer');			
 	}
 
 	public function editkota()
 	{
+		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$id = $this->input->get('id');
+
 		$data['kota'] = $this->model_admin->datakota();
 		$data['kotabyid'] = $this->model_admin->datakotabyid($id);
 		if ($this->input->post()) {
@@ -219,7 +267,7 @@ class Admin extends CI_Controller {
                     $this->session->set_flashdata('danger','Edit Kota gagal');				
 			}
 		}
-		$this->load->view('template/header');
+		$this->load->view('template/header',$data);
 		$this->load->view('admin/datakota',$data);
 		$this->load->view('template/footer');		
 	}
@@ -238,6 +286,9 @@ class Admin extends CI_Controller {
 	}	
 	public function hapuspengiriman()
 	{
+		if ($this->session->userdata('rule')=='admin_jkt') {
+			redirect('page/aksesdenied');
+		}else{
 		$id=$this->input->get('id');
 			if ($this->model_admin_proses->hapuspengiriman($id)) {
 				    $this->session->set_flashdata('Kota',TRUE);
@@ -247,11 +298,15 @@ class Admin extends CI_Controller {
 				    $this->session->set_flashdata('Kota',TRUE);
                     $this->session->set_flashdata('danger','Hapus Kota gagal');				
 			}
+		}
 	}
 
 	public function data_customer()
 	{
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$data['cust'] = $this->model_admin->getdatacustomer();
 		$this->load->view('template/header',$data);
 		$this->load->view('admin/datacustomer',$data);
@@ -261,6 +316,9 @@ class Admin extends CI_Controller {
 	public function tambah_cust()
 	{
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		if ($this->input->post()) {
 			if ($this->model_admin_proses->tambah_cust()) {
 				    $this->session->set_flashdata('Kota',TRUE);
@@ -278,6 +336,9 @@ class Admin extends CI_Controller {
 	public function edit_cust()
 	{
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$id = $this->input->get('id');
 		$data['cust'] = $this->model_admin->datacustbyid($id);
 		if ($this->input->post()) {
@@ -312,6 +373,9 @@ class Admin extends CI_Controller {
 	public function data_vendor()
 	{
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$data['vendor'] = $this->model_admin->get_data_vendor();
 		$this->load->view('template/header',$data);
 		$this->load->view('admin/data_vendor',$data);
@@ -321,6 +385,9 @@ class Admin extends CI_Controller {
 	public function tambah_vendor()
 	{
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		if ($this->input->post()) {
 			if ($this->model_admin_proses->tambah_vendor()) {
 				    $this->session->set_flashdata('Vendor',TRUE);
@@ -338,6 +405,9 @@ class Admin extends CI_Controller {
 	public function edit_vendor()
 	{
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$id = $this->input->get('id');
 		$data['vendor'] = $this->model_admin->get_data_vendor_byid($id);
 		if ($this->input->post()) {
@@ -370,6 +440,10 @@ class Admin extends CI_Controller {
 
 	public function data_armada()
 	{
+		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$data['vendor'] = $this->model_admin->get_data_vendor();
 		$data['armada'] = $this->model_admin->get_data_armada();
 		if ($this->input->post()) {
@@ -382,12 +456,16 @@ class Admin extends CI_Controller {
                     $this->session->set_flashdata('danger','Tambah Armada gagal');				
 			}
 		}
-		$this->load->view('template/header');
+		$this->load->view('template/header',$data);
 		$this->load->view('admin/data_armada',$data);
 		$this->load->view('template/footer');			
 	}	
 	public function edit_armada()
 	{
+		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$id = $this->input->get('id');
 		$data['vendor'] = $this->model_admin->get_data_vendor();
 		$data['armada'] = $this->model_admin->get_data_armada();
@@ -402,7 +480,7 @@ class Admin extends CI_Controller {
                     $this->session->set_flashdata('danger','Edit Armada gagal');				
 			}
 		}
-		$this->load->view('template/header');
+		$this->load->view('template/header',$data);
 		$this->load->view('admin/data_armada',$data);
 		$this->load->view('template/footer');			
 	}
@@ -424,6 +502,9 @@ class Admin extends CI_Controller {
 	{
 		$id = $this->input->get('id');
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$data['pengiriman'] = $this->model_admin->dataPengirimanByid($id);
 
 		if ($this->input->post()) {
@@ -436,7 +517,7 @@ class Admin extends CI_Controller {
 	            $this->session->set_flashdata('danger','Update Status Pengiriman gagal');				
 			}
 		}
-		$this->load->view('template/header');
+		$this->load->view('template/header',$data);
 		$this->load->view('admin/edit_status_pengiriman',$data);
 		$this->load->view('template/footer');		
 	}
@@ -445,6 +526,9 @@ class Admin extends CI_Controller {
 	{
 
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$data['barang'] = $this->model_admin->getdatabarang();
 		if ($this->input->post()) {
 			if ($this->model_admin_proses->tambah_barang()) {
@@ -456,7 +540,7 @@ class Admin extends CI_Controller {
 	            $this->session->set_flashdata('danger','Barang gagal');				
 			}
 		}
-		$this->load->view('template/header');
+		$this->load->view('template/header',$data);
 		$this->load->view('admin/data_barang',$data);
 		$this->load->view('template/footer');			
 	}	
@@ -464,6 +548,9 @@ class Admin extends CI_Controller {
 	{
 		$id = $this->input->get('id');
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$data['barang'] = $this->model_admin->getdatabarang();
 		$data['barangbyid'] = $this->model_admin->getdatabarangbyid($id);
 		if ($this->input->post()) {
@@ -476,7 +563,7 @@ class Admin extends CI_Controller {
 	            $this->session->set_flashdata('danger','Edit gagal');				
 			}
 		}
-		$this->load->view('template/header');
+		$this->load->view('template/header',$data);
 		$this->load->view('admin/data_barang',$data);
 		$this->load->view('template/footer');			
 	}
@@ -497,8 +584,11 @@ class Admin extends CI_Controller {
 	{
 
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$data['pengirim'] = $this->model_admin->get_data_pengirim_vendor();
-		$this->load->view('template/header');
+		$this->load->view('template/header',$data);
 		$this->load->view('admin/data_pengirim_vendor',$data);
 		$this->load->view('template/footer');
 	}	
@@ -506,6 +596,9 @@ class Admin extends CI_Controller {
 	public function tambah_pengirim_vendor()
 	{
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$data['kota'] 		= $this->model_admin->datakota();
 		$data['cust'] 		= $this->model_admin->getdatacustomer();
 		$data['vendor'] 	= $this->model_admin->get_data_vendor();
@@ -523,38 +616,49 @@ class Admin extends CI_Controller {
 			}			
 		}
 
-		$this->load->view('template/header');
+		$this->load->view('template/header',$data);
 		$this->load->view('admin/tambah_pengirim',$data);
 		$this->load->view('template/footer');		
 	}	
 	public function edit_pengirim_vendor()
 	{
-		$id = $this->input->get('id');
-		$data = [];
-		$data['kota'] 		= $this->model_admin->datakota();
-		$data['cust'] 		= $this->model_admin->getdatacustomer();
-		$data['vendor'] 	= $this->model_admin->get_data_vendor();
-		$data['armada'] 	= $this->model_admin->get_data_armada_join_vendor();
-		$data['barang'] 	= $this->model_admin->getdatabarang();	
-		$data['pengiriman']	= $this->model_admin->get_data_pengirim_vendor_byid($id);
-		if ($this->input->post()) {
-			if ($this->model_admin_proses->edit_pengiriman_vendor($id)) {
-				    $this->session->set_flashdata('Pengiriman',TRUE);
-                    $this->session->set_flashdata('success','Update Pengirim / Vendor Berhasil');
-                    redirect('admin/data_pengirim_vendor');
-			}else{
-				    $this->session->set_flashdata('Pengiriman',TRUE);
-                    $this->session->set_flashdata('danger','Update Pengirim / Vendor gagal');				
-			}			
-		}
+		if ($this->session->userdata('rule')=='admin_jkt') {
+			redirect('page/aksesdenied');
+		}else{
+			$id = $this->input->get('id');
+			$data = [];
+			$data['ttlp'] = $this->data['ttlp'];
+			$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
+			$data['kota'] 		= $this->model_admin->datakota();
+			$data['cust'] 		= $this->model_admin->getdatacustomer();
+			$data['vendor'] 	= $this->model_admin->get_data_vendor();
+			$data['armada'] 	= $this->model_admin->get_data_armada_join_vendor();
+			$data['barang'] 	= $this->model_admin->getdatabarang();	
+			$data['pengiriman']	= $this->model_admin->get_data_pengirim_vendor_byid($id);
+			if ($this->input->post()) {
+				if ($this->model_admin_proses->edit_pengiriman_vendor($id)) {
+					    $this->session->set_flashdata('Pengiriman',TRUE);
+	                    $this->session->set_flashdata('success','Update Pengirim / Vendor Berhasil');
+	                    redirect('admin/data_pengirim_vendor');
+				}else{
+					    $this->session->set_flashdata('Pengiriman',TRUE);
+	                    $this->session->set_flashdata('danger','Update Pengirim / Vendor gagal');				
+				}			
+			}
 
-		$this->load->view('template/header');
-		$this->load->view('admin/tambah_pengirim',$data);
-		$this->load->view('template/footer');		
+			$this->load->view('template/header',$data);
+			$this->load->view('admin/tambah_pengirim',$data);
+			$this->load->view('template/footer');			
+		}
+				
 	}
 	public function hapus_pengirim_vendor()
 	{
-		$id = $this->input->get('id');
+		if ($this->session->userdata('rule')=='admin_jkt') {
+			redirect('page/aksesdenied');
+		}else{
+			$id = $this->input->get('id');
 			if ($this->model_admin_proses->hapus_pengirim($id)) {
 				    $this->session->set_flashdata('Kota',TRUE);
                     $this->session->set_flashdata('success','Hapus Pengirim / Vendor Berhasil');
@@ -563,15 +667,19 @@ class Admin extends CI_Controller {
 				    $this->session->set_flashdata('Kota',TRUE);
                     $this->session->set_flashdata('danger','Hapus Pengirim / Vendor gagal');				
 			}
+		}
 
 	}
 	public function harga_vendor()
 	{
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$id = $this->input->get('id');
 		$data['harga_vendor'] = $this->model_admin->get_data_harga_vendor($id);
 		$data['id_vendor'] = $id;
-		$this->load->view('template/header');
+		$this->load->view('template/header',$data);
 		$this->load->view('admin/data_harga_vendor',$data);
 		$this->load->view('template/footer');			
 	}
@@ -579,9 +687,12 @@ class Admin extends CI_Controller {
 	public function tambah_harga_vendor()
 	{
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$idvendor = $this->input->get('id_vendor');
 		$data['kota'] 		= $this->model_admin->datakota();
-		$data['armada'] 	= $this->model_admin->get_data_armada_join_vendorbyvendor($idvendor);
+		$data['armada'] 	= $this->model_admin->get_data_armada_join_vendor($idvendor);
 		if ($this->input->post()) {
 			if ($this->model_admin_proses->tambah_harga_vendor($idvendor)) {
 				    $this->session->set_flashdata('Pengiriman',TRUE);
@@ -592,17 +703,20 @@ class Admin extends CI_Controller {
                     $this->session->set_flashdata('danger','Tambah Harga Vendor gagal');				
 			}	
 		}
-		$this->load->view('template/header');
+		$this->load->view('template/header',$data);
 		$this->load->view('admin/tambah_harga_vendor',$data);
 		$this->load->view('template/footer');		
 	}	
 	public function edit_harga_vendor()
 	{
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$id = $this->input->get('id');
 		$idvendor = $this->input->get('id_vendor');
 		$data['kota'] 		= $this->model_admin->datakota();
-		$data['armada'] 	= $this->model_admin->get_data_armada_join_vendorbyvendor($idvendor);
+		$data['armada'] 	= $this->model_admin->get_data_armada_join_vendor($idvendor);
 		$data['harga'] 		= $this->model_admin->get_data_harga_vendorbyid($id);
 		if ($this->input->post()) {
 			if ($this->model_admin_proses->edit_harga_vendor($id,$idvendor)) {
@@ -614,13 +728,14 @@ class Admin extends CI_Controller {
                     $this->session->set_flashdata('danger','Edit Harga Vendor gagal');				
 			}	
 		}
-		$this->load->view('template/header');
+		$this->load->view('template/header',$data);
 		$this->load->view('admin/tambah_harga_vendor',$data);
 		$this->load->view('template/footer');		
 	}
 
 	public function hapus_harga_vendor()
 	{
+
 		$id = $this->input->get('id');
 		$idvendor = $this->input->get('id_vendor');
 			if ($this->model_admin_proses->hapus_harga_vendor($id)) {
@@ -636,8 +751,11 @@ class Admin extends CI_Controller {
 	public function data_invoice()
 	{
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$data['invoice'] = $this->model_admin->get_data_invoice();
-		$this->load->view('template/header');
+		$this->load->view('template/header',$data);
 		$this->load->view('admin/data_invoice',$data);
 		$this->load->view('template/footer');		
 	}
@@ -645,6 +763,9 @@ class Admin extends CI_Controller {
 	public function tambah_invoice()
 	{
 		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
 		$data['cust'] 	= $this->model_admin->getdatacustomer();
 		if ($this->input->post()) {
 			if ($this->model_admin_proses->tambah_invoice()) {
@@ -656,33 +777,44 @@ class Admin extends CI_Controller {
                     $this->session->set_flashdata('danger','Tambah Invoice gagal');				
 			}
 		}
-		$this->load->view('template/header');
+		$this->load->view('template/header',$data);
 		$this->load->view('admin/tambah_invoice',$data);
 		$this->load->view('template/footer');			
 	}
 	public function edit_invoice()
 	{
-		$data = [];
-		$id = $this->input->get('id');
-		$data['cust'] 	= $this->model_admin->getdatacustomer();
-		$data['inv'] 	= $this->model_admin->get_data_invoicebyid($id);
-		if ($this->input->post()) {
-			if ($this->model_admin_proses->edit_invoice($id)) {
-				    $this->session->set_flashdata('Invoice',TRUE);
-                    $this->session->set_flashdata('success','Edit Invoice Berhasil');
-                    redirect('admin/data_invoice');
-			}else{
-				    $this->session->set_flashdata('Invoice',TRUE);
-                    $this->session->set_flashdata('danger','Edit Invoice gagal');				
+		if ($this->session->userdata('rule')=='admin_jkt') {
+			redirect('page/aksesdenied');
+		}else{
+			$data = [];
+			$data['ttlp'] = $this->data['ttlp'];
+			$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
+			$id = $this->input->get('id');
+			$data['cust'] 	= $this->model_admin->getdatacustomer();
+			$data['inv'] 	= $this->model_admin->get_data_invoicebyid($id);
+			if ($this->input->post()) {
+				if ($this->model_admin_proses->edit_invoice($id)) {
+					    $this->session->set_flashdata('Invoice',TRUE);
+	                    $this->session->set_flashdata('success','Edit Invoice Berhasil');
+	                    redirect('admin/data_invoice');
+				}else{
+					    $this->session->set_flashdata('Invoice',TRUE);
+	                    $this->session->set_flashdata('danger','Edit Invoice gagal');				
+				}
 			}
+			$this->load->view('template/header',$data);
+			$this->load->view('admin/tambah_invoice',$data);
+			$this->load->view('template/footer');				
 		}
-		$this->load->view('template/header');
-		$this->load->view('admin/tambah_invoice',$data);
-		$this->load->view('template/footer');			
+				
 	}	
 
 	public function hapus_invoice()
 	{
+		if ($this->session->userdata('rule')=='admin_jkt') {
+			redirect('page/aksesdenied');
+		}else{
 		$id = $this->input->get('id');
 			if ($this->model_admin_proses->hapus_invoice($id)) {
 				    $this->session->set_flashdata('Invoice',TRUE);
@@ -692,7 +824,7 @@ class Admin extends CI_Controller {
 				    $this->session->set_flashdata('Invoice',TRUE);
                     $this->session->set_flashdata('danger','Hapus Invoice gagal');				
 			}
-
+		}
 	}	
 	public function lunas_invoice()
 	{
@@ -745,5 +877,100 @@ class Admin extends CI_Controller {
                     $this->session->set_flashdata('danger','Update Status vendor gagal');				
 			}
 
+	}
+
+	public function status_pengiriman(){
+		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
+
+		$idpengiriman = $this->input->get('id');
+		$data['pengiriman'] = $this->model_admin->dataPengirimanByid($idpengiriman);		
+		$data['rsp'] = $this->model_admin->riwayat_status_pengiriman($idpengiriman);
+		if ($this->input->post()) {
+			$simpan = $this->model_admin_proses->tambah_riwayat_pengiriman($idpengiriman);
+			if ($simpan) {
+                    $this->session->set_flashdata('success','Update Status Pengiriman Berhasil');
+                    redirect('admin/status_pengiriman?id='.$simpan);
+			}else{
+                    $this->session->set_flashdata('danger','Update Status Pengiriman gagal');				
+			}
+		}
+		$this->load->view('template/header',$data);
+		$this->load->view('admin/edit_status_pengiriman',$data);
+		$this->load->view('template/footer');
+	}
+
+	public function suratjalan(){
+
+		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
+		$data['sj'] = $this->model_admin->data_surat_jalan();
+		$this->load->view('template/header',$data);
+		$this->load->view('admin/suratjalan',$data);
+		$this->load->view('template/footer');
+	}
+
+	public function tambahsuratjalan(){
+
+		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
+		if ($this->input->post()) {
+			$simpan = $this->model_admin_proses->tambahsuratjalan();
+			if ($simpan) {
+                    $this->session->set_flashdata('success','Tambah Surat Jalan Berhasil');
+                    redirect('admin/suratjalan');
+			}else{
+                    $this->session->set_flashdata('danger','Tambah Surat Jalan gagal');				
+			}
+		}
+		$this->load->view('template/header',$data);
+		$this->load->view('admin/tambahsuratjalan',$data);
+		$this->load->view('template/footer');
+	}
+	public function editsuratjalan(){
+
+		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
+$data['ttls'] = $this->data['ttls'];
+		$id = $this->input->get('id');
+		$data['sj'] = $this->model_admin->data_surat_jalanByid($id);
+		if ($this->input->post()) {
+			$simpan = $this->model_admin_proses->editsuratjalan($id);
+			if ($simpan) {
+                    $this->session->set_flashdata('success','edit Surat Jalan Berhasil');
+                    redirect('admin/suratjalan');
+			}else{
+                    $this->session->set_flashdata('danger','edit Surat Jalan gagal');				
+			}
+		}
+		$this->load->view('template/header',$data);
+		$this->load->view('admin/tambahsuratjalan',$data);
+		$this->load->view('template/footer');
+	}
+
+	public function lunassuratjalan(){
+		$id = $this->input->get('id');
+			if ($this->model_admin_proses->lunassuratjalan($id)) {
+                    $this->session->set_flashdata('success','Pembaruan status Surat Jalan Berhasil');
+                    redirect('admin/suratjalan');
+			}else{
+                    $this->session->set_flashdata('danger','Pembaruan status Surat Jalan gagal');				
+			}
+	}
+	public function hapussuratjalan(){
+		$id = $this->input->get('id');
+			if ($this->model_admin_proses->hapussuratjalan($id)) {
+                    $this->session->set_flashdata('success','Hapus Surat Jalan Berhasil');
+                    redirect('admin/suratjalan');
+			}else{
+                    $this->session->set_flashdata('danger','Hapus Surat Jalan gagal');				
+			}
 	}
 }

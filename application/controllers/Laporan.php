@@ -13,6 +13,8 @@ class Laporan extends CI_Controller {
 		$this->load->model('model_admin');	
 		$this->load->model('model_laporan');	
 		$this->load->model('model_admin_proses');	
+		$this->data['ttlp'] = $this->model_admin->totalverifpengiriman();
+		$this->data['ttlv'] = $this->model_admin->totalverifinvoice();
 	}
 
 	public function index()
@@ -21,6 +23,9 @@ class Laporan extends CI_Controller {
 	}
 	public function pdf()
 	{
+		$data = [];
+		$data['ttlp'] = $this->data['ttlp'];
+		$data['ttlv'] = $this->data['ttlv'];
 		$this->load->library('cetak_berkas');
 
 		$nomor_invo = $this->input->get('nomor_invo');
@@ -31,7 +36,7 @@ class Laporan extends CI_Controller {
 			$this->cetak_berkas->invoice($pengiriman);
 			$data['output'] = 'invoice_'.$id.'.pdf';			
 		}
-		$this->load->view('template/header');
+		$this->load->view('template/header',$data);
 		$this->load->view('admin/laporan_invoice',$data);
 		$this->load->view('template/footer');
 	}

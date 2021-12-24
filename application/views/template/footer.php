@@ -81,12 +81,27 @@ $(document).ready(function () {
   $('#datepicker').datepicker({
     format: 'dd-mm-yyyy',
       autoclose: true
+    });
+     $('.datepicker').datepicker({
+    format: 'dd-mm-yyyy',
+      autoclose: true
     }); 
+</script>
+<script>
+  $(document).ready(function(){
+        $('.pilihtanggal').datepicker({
+          dateFormat: 'dd-mm-yy',
+          changeYear: true,
+          changeMonth: true,
+          yearRange: '1970:+20'
+        });
+    });
 </script>
 <script>
   $(function () {
     $("#example1").DataTable();
     $("#example2").DataTable();
+    $(".example3").DataTable();
   });
 </script> 
 <script type="text/javascript">

@@ -14,7 +14,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Edit Admin</li>
+              <li class="breadcrumb-item active">Form Invoice</li>
             </ol>
           </div>
         </div>
@@ -28,7 +28,7 @@
           <div class="col-md-12">
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Edit Admin Intan Daya Mandiri</h3>
+                <h3 class="card-title">Form Invoice Intan Daya Mandiri</h3>
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="tab-content">
@@ -54,7 +54,7 @@
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Tanggal Invoice</label>
                         <div class="col-sm-8">
-                          <input type="text" name="tgl_inv" class="form-control inputmask" value="<?=isset($inv)?date('d-m-Y',strtotime($inv['tgl_inv'])):'';?>" >
+                          <input type="text" name="tgl_inv" class="form-control pilihtanggal" value="<?=isset($inv)?date('d-m-Y',strtotime($inv['tgl_inv'])):'';?>" >
                         </div>
                       </div>                    
                         <div class="form-group row">

@@ -14,7 +14,7 @@ class Ajax extends CI_Controller {
     public function get_armadabyvendor()
     {
         $id = $this->input->post('id');
-        $data = $this->model_admin->get_data_armada_join_vendorbyvendor($id);
+        $data = $this->model_admin->get_data_armada_join_vendor($id);
         echo json_encode($data);
     }      
     public function get_harga_vendor()

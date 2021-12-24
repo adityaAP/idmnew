@@ -36,6 +36,8 @@
                 <thead>
                 <tr>
                   <th>No</th>
+                  <th>Aksi</th>                  
+                  <th>Status</th>
                   <th>Nama Vendor</th>
                   <th>Nomor PO</th>
                   <th>Jangka Waktu</th>
@@ -47,8 +49,7 @@
                   <th>Armada</th>
                   <th>Jumlah Barang</th>
                   <th>Nilai Invoice</th>
-                  <th>Status</th>
-                  <th>Aksi</th>
+                  
                 </tr>
                 </thead>
                 <tbody>
@@ -59,6 +60,26 @@
                       ?>
                   <tr>
                     <td><?=$no++;?></td>
+                    <td>
+                      <?php if ($this->session->userdata('rule')!='admin_jkt') { ?>
+                          <a href="<?=site_url('admin/edit_pengirim_vendor?id='.$data['id_pengirim'].'')?>" class="btn btn-sm btn-info">Edit</a>
+                          <a href="<?=site_url('admin/hapus_pengirim_vendor?id='.$data['id_pengirim'].'')?>" class="btn btn-sm btn-danger" onclick="return cek_delete()">Hapus</a> 
+                          <?php if ($data['status']=='LUNAS') { ?>
+                          <a href="<?=site_url('admin/vendor_batal_lunas?id='.$data['id_pengirim'].'')?>" class="btn btn-sm btn-warning" >Batalkan Lunas</a>
+                          <?php }else{ ?>
+                          <a href="<?=site_url('admin/vendor_lunas?id='.$data['id_pengirim'].'')?>" class="btn btn-sm btn-warning" >Lunas</a>
+                          <?php } ?>                      
+                      <?php } ?>
+                      
+                    </td>
+                    <?php if ($data['status']=='LUNAS') { ?>
+                      <td style="background-color:#136BD4;color:white;text-align:center;"><b>LUNAS</b></td>
+                    <?php }else{ if ($skg <= $data['jangka_waktu']) { ?>
+                      <td style="background-color:green;color:white;text-align:center;"><b>AMAN</b></td>
+                    <?php }else{ ?>
+                      <td style="background-color:red;color:white;text-align:center;"><b>JATUH TEMPO</b></td>
+                    <?php } }?>
+                    
                     <td><?=$this->kode_converter->vendor($data['id_vendor'])?></td>
                     <td><?=$data['no_po']?></td>
                     <td><?=$data['jangka_waktu']?></td>
@@ -70,23 +91,7 @@
                     <td><?=$this->kode_converter->armada($data['armada'])?></td>
                     <td><?=$data['jumlah_barang']?></td>
                     <td>Rp <?=number_format($data['nilai_inv'],2,',','.');?></td>
-                    <?php if ($data['status']=='LUNAS') { ?>
-                      <td style="background-color:#136BD4;color:white;text-align:center;"><b>LUNAS</b></td>
-                    <?php }else{ if ($skg <= $data['jangka_waktu']) { ?>
-                      <td style="background-color:green;color:white;text-align:center;"><b>AMAN</b></td>
-                    <?php }else{ ?>
-                      <td style="background-color:red;color:white;text-align:center;"><b>JATUH TEMPO</b></td>
-                    <?php } }?>
-                    <td>
-                      <a href="<?=site_url('admin/edit_pengirim_vendor?id='.$data['id_pengirim'].'')?>" class="btn btn-sm btn-info">Edit</a>
-                      <a href="<?=site_url('admin/hapus_pengirim_vendor?id='.$data['id_pengirim'].'')?>" class="btn btn-sm btn-danger" onclick="return cek_delete()">Hapus</a> 
-                      <?php if ($data['status']=='LUNAS') { ?>
-                      <a href="<?=site_url('admin/vendor_batal_lunas?id='.$data['id_pengirim'].'')?>" class="btn btn-sm btn-warning" >Batalkan Lunas</a>
-                      <?php }else{ ?>
-                      <a href="<?=site_url('admin/vendor_lunas?id='.$data['id_pengirim'].'')?>" class="btn btn-sm btn-warning" >Lunas</a>
-                      <?php } ?>
-
-                    </td>
+                    
 
                   </tr>
               <?php }} ?>

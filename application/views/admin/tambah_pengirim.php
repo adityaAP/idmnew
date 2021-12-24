@@ -52,7 +52,7 @@
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Jangka Waktu</label>
                         <div class="col-sm-10">
-                          <input type="text" name="jangka_waktu" class="form-control inputmask" value="<?=isset($pengiriman)?date('d-m-Y',strtotime($pengiriman['jangka_waktu'])):'';?>" >
+                          <input type="text" name="jangka_waktu" class="form-control pilihtanggal" value="<?=isset($pengiriman)?date('d-m-Y',strtotime($pengiriman['jangka_waktu'])):'';?>" >
                         </div>
                       </div><br><hr>
                       <?php $no=1; ?>
@@ -61,18 +61,13 @@
                         <div class="form-group row">
                           <label for="inputName" class="col-sm-2 col-form-label">Nama Barang</label>
                           <div class="col-sm-10">
-                          <select class="form-control" name="nama_barang">
-                            <option value="">-- Pilih Barang -- </option>
-                            <?php if ($barang!='') { foreach ($barang as $value) { ?>
-                              <option <?=isset($pengiriman)&&$pengiriman['nama_barang']==$value['id_barang']?"selected":''; ?> value="<?=$value['id_barang']?>"><?=$value['nama_barang']?></option>
-                            <?php }} ?>
-                          </select>
+                          <input type="text" name="nama_barang" class="form-control" value="<?=isset($pengiriman)?$pengiriman['nama_barang']:'';?>" >
                           </div>
                         </div>  
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Tanggal Muat</label>
                         <div class="col-sm-10">
-                          <input type="text" name="tgl_muat" class="form-control inputmask" value="<?=isset($pengiriman)?date('d-m-Y',strtotime($pengiriman['tgl_muat'])):'';?>" >
+                          <input type="text" name="tgl_muat" class="form-control pilihtanggal" value="<?=isset($pengiriman)?date('d-m-Y',strtotime($pengiriman['tgl_muat'])):'';?>" >
                         </div>
                       </div>
                         <div class="form-group row">

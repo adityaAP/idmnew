@@ -25,6 +25,31 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Riwayat Pengiriman</h3></div>
+              <div class="card-body">
+                <table class="table table-bordered table-striped example3">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Tanggal</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php $no=1; if ($rsp!='') { foreach ($rsp as $r) { ?>
+                      <tr>
+                        <td><?=$no++;?></td>
+                        <td><?=$r['created_rp']?></td>
+                        <td><?=$r['status']?></td>
+                      </tr>
+                    <?php }} ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
           <div class="col-md-12">
             <div class="card card-primary">
               <div class="card-header">
@@ -79,6 +104,9 @@
               </div><!-- /.card-body -->
             </div>
             <!-- /.nav-tabs-custom -->
+          </div>
+          <div class="col-lg-12">
+            
           </div>
           <!-- /.col -->
         </div>

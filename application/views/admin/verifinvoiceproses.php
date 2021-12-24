@@ -14,7 +14,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Tambah Admin</li>
+              <li class="breadcrumb-item active">Verifikasi Invoice</li>
             </ol>
           </div>
         </div>
@@ -28,59 +28,55 @@
           <div class="col-md-12">
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Tambah Admin Intan Daya Mandiri</h3>
+                <h3 class="card-title">Verifikasi Invoice Intan Daya Mandiri</h3>
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="tab-content">
                   <div class="tab-body">
                     <form class="form-horizontal" method="post" enctype="multipart/form-data">   
-
                       <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Email</label>
+                        <label for="inputName" class="col-sm-2 col-form-label">Nama Customer</label>
                         <div class="col-sm-8">
-                          <input type="email" name="email" class="form-control" value="<?=isset($admin)?$admin['email']:'';?>" >
-                        </div>
-                      </div> 
-                      <?php if (isset($admin)) { ?>
-
-                      <?php }else{ ?>
-                      <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Password</label>
-                        <div class="col-sm-8">
-                          <input type="password" name="password" class="form-control">
-                        </div>
-                      </div>
-                      <?php } ?>
-                      <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Posisi</label>
-                        <div class="col-sm-8">
-                          <select class="form-control" name="rule">
-                            <option value="admin_smg">Admin Semarang</option>
-                            <option value="admin_jkt">Admin Jakarta</option>
-                            <option value="verifikator">Verifikator</option>
+                          <select class="form-control" name="nama_pabrik">
+                            <option>-- Pilih Customer -- </option>
+                            <?php if ($cust!='') { foreach ($cust as $value) { ?>
+                              <option <?=isset($inv)&&$inv['id_cust']==$value['id_cust']?"selected":''; ?> value="<?=$value['id_cust']?>"><?=$value['nama_cust']?></option>
+                            <?php }} ?>
                           </select>
                         </div>
-                      </div> 
-                      <br><hr>                       
+                      </div>                       
                       <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Nama Lengkap</label>
+                        <label for="inputName" class="col-sm-2 col-form-label">Nomor Invoice</label>
                         <div class="col-sm-8">
-                          <input type="text" name="nama" class="form-control" value="<?=isset($admin)?$admin['nama']:'';?>" >
+                          <input type="text" name="no_inv" class="form-control" value="<?=isset($inv)?$inv['no_inv']:'';?>">
                         </div>
-                      </div>                        
+                      </div>                       
                       <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Nomor Telepon</label>
+                        <label for="inputName" class="col-sm-2 col-form-label">Tanggal Invoice</label>
                         <div class="col-sm-8">
-                          <input type="text" name="telp" class="form-control" value="<?=isset($admin)?$admin['telp']:'';?>" >
+                          <input type="text" name="tgl_inv" class="form-control pilihtanggal" value="<?=isset($inv)?date('d-m-Y',strtotime($inv['tgl_inv'])):'';?>" >
                         </div>
-                      </div>                        
+                      </div>                    
+                        <div class="form-group row">
+                          <label for="inputName" class="col-sm-2 col-form-label">Description</label>
+                          <div class="col-sm-8">
+                            <textarea class="form-control" rows="3" name="description"><?=isset($inv)?$inv['description']:'';?></textarea>
+                          </div>
+                        </div>                         
+                                                                
+                        <div class="form-group row">
+                          <label for="inputName" class="col-sm-2 col-form-label">DPP</label>
+                          <div class="col-sm-8">
+                            <input type="number" name="dpp" class="form-control" value="<?=isset($inv)?$inv['dpp']:'';?>" >
+                          </div>
+                        </div>                    
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
                         </div>
                       </div>
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
-                            <button type="submit" class="btn btn-info">Simpan</button>
+                            <button type="submit" class="btn btn-primary">Verifikasi</button>
                         </div>
                       </div>
                     </form>

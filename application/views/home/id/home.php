@@ -1,6 +1,6 @@
 <style type="text/css">
 	.slider-container .tp-opacity-overlay {
-	background-image: linear-gradient(to right,#804609,#a86e14,#c78a2d);
+	/*background-image: linear-gradient(to right,#804609,#a86e14,#c78a2d);*/
 	opacity: 0.9;
 }
 </style>
@@ -29,12 +29,20 @@
 									data-autoplayonlyfirsttime="false" 
 									data-nextslideatend="false">
 								</div>
+								<div class="tp-caption font-weight-light text-center text-color-light"
+									data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":2000,"split":"chars","splitdelay":0.05,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+									data-x="center"
+									data-y="top" data-voffset="['150','0','0','0']"
+									data-fontsize="['150','150','150','150']"
+									data-lineheight="['29','29','29','40']"><img src="<?=base_url('assets/logo/idmnewnew.png')?>"></div>
+							
+
 								<div class="tp-caption font-weight-extra-bold text-color-light negative-ls-2"
 									data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
 									data-x="center"
 									data-y="center"
 									data-fontsize="['50','50','50','90']"
-									data-lineheight="['55','55','55','95']" style="z-index: 5;">PT. INTAN DAYA MANDIRI</div>
+									data-lineheight="['55','55','55','95']" style="z-index: 5;"><font style="color:blue;">PT. INTAN DAYA MANDIRI</font></div>
 
 								<div class="tp-caption font-weight-bold"
 									data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":2000,"split":"chars","splitdelay":0.05,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
@@ -42,20 +50,25 @@
 									data-y="center" data-voffset="['40','40','40','80']"
 									data-fontsize="['18','18','18','50']"
 									data-lineheight="['20','20','20','55']"
-									style="color: #b5b5b5; z-index: 5;">YOUR BUSINESS PARTNER</div>
-								
-								<a class="tp-caption slider-scroll-button"
-									data-hash
-									data-hash-offset="80"
+									style="color: #b5b5b5; z-index: 5;"><font style="font-size:18px;color:white;">YOUR BUSINESS PARTNER</font></div>
+								<a class="tp-caption btn btn-rounded-icon text-color-light"
+									style="display: inline-flex !important"
+									data-frames='[{"delay":500,"speed":2000,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
 									href="#main"
+									data-hash
+									data-hash-offset="150"
 									data-x="center"
-									data-y="bottom" data-voffset="['30','30','30','30']"
-									data-start="1600"					 
-									data-transform_in="y:[100%];s:500;"
-									data-transform_out="y:[100%];opacity:0;s:500;"
-									data-mask_in="x:0px;y:0px;" style="z-index: 5;"></a>
+									data-y="bottom" data-voffset="['120','85','-150','-400']"	
+									data-fontsize="['23','25','40','50']"><i class="icon-arrow-down icons"></i></a>
 
-								<div class="tp-dottedoverlay tp-opacity-overlay"></div>
+								<div class="tp-caption"
+									style="left: -5px; background-color: #FFF"
+									data-frames='[{"delay":0,"from":"skY:-3deg;","to":"o:1","ease":"Power3.easeInOut"}]'
+									data-x="center"
+									data-y="bottom" data-voffset="-80"
+									data-height="['150']"
+									data-width="105%"
+									data-basealign="slide"></div>
 							</li>
 						</ul>
 					</div>

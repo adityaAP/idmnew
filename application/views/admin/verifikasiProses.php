@@ -55,7 +55,7 @@
                         <div class="form-group row">
                           <label for="inputName" class="col-sm-2 col-form-label">Nama Barang</label>
                           <div class="col-sm-8">
-                            <input type="text" name="nama_barang" class="form-control" value="<?=isset($pengiriman)?$pengiriman['nama_barang']:'';?>" >
+                          <input type="text" name="nama_barang" class="form-control" value="<?=isset($pengiriman)?$pengiriman['nama_barang']:'';?>" >
                           </div>
                         </div>                       
                         <div class="form-group row">
@@ -101,7 +101,7 @@
                             <select class="form-control" name="armada" id="armada">
                               <option>-- Pilih Armada -- </option>
                               <?php if ($armada!='') { foreach ($armada as $value) { ?>
-                                <option <?=isset($pengiriman)&&$pengiriman['armada']==$value['id_armada']?"selected":''; ?> value="<?=$value['id_armada']?>"><?=$value['nama_vendor']?> - <?=$value['jenis_armada']?></option>
+                                <option <?=isset($pengiriman)&&$pengiriman['armada']==$value['id_armada']?"selected":''; ?> value="<?=$value['id_armada']?>"><?=$value['jenis_armada']?></option>
                               <?php }} ?>
                             </select>
                           </div>
@@ -113,17 +113,17 @@
                           </div>
                         </div> 
                         <div class="form-group row">
-                          <label for="inputName" class="col-sm-2 col-form-label">Container</label>
-                          <div class="col-sm-8">
-                            <input type="text" name="container[]" class="form-control" value="<?=isset($pengiriman)?$pengiriman['container']:'';?>" >
-                          </div>
-                        </div> 
-                        <div class="form-group row">
                           <label for="inputName" class="col-sm-2 col-form-label">Nilai Invoice</label>
                           <div class="col-sm-8">
                             <input type="text" name="nilai_inv" class="form-control" value="<?=isset($pengiriman)?$pengiriman['nilai_inv']:'';?>" >
                           </div>                        
-                        </div> 
+                        </div>
+                        <div class="form-group row">
+                          <label for="inputName" class="col-sm-2 col-form-label">Status Pengiriman</label>
+                          <div class="col-sm-8">
+                            <textarea class="form-control" name="status_pengiriman" rows="3"><?=isset($pengiriman)?$pengiriman['status_pengiriman']:'';?></textarea>
+                          </div>                        
+                        </div>  
                       <br><hr>                    
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
@@ -131,7 +131,7 @@
                       </div>
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="submit" class="btn btn-primary">Verifikasi</button>
                         </div>
                       </div>
                     </form>

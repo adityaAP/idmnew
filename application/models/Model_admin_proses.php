@@ -63,17 +63,20 @@ class Model_admin_proses extends CI_Model {
             'jangka_waktu'  => $jangka_waktu,
             'created_by'    => $userid,
 
-            'nama_barang'   => $this->input->post('nama_barang'),
-            'dari'          => $this->input->post('dari'),
-            'tujuan'        => $this->input->post('tujuan'),
-            'keterangan'    => $this->input->post('keterangan'),
-            'vendor'        => $this->input->post('vendor'),
-            'armada'        => $this->input->post('armada'),
-            'jumlah_barang' => $this->input->post('jumlah_barang'),
-            'nilai_inv'     => $this->input->post('nilai_inv'),
+            'nama_barang'           => $this->input->post('nama_barang'),
+            'dari'                  => $this->input->post('dari'),
+            'tujuan'                => $this->input->post('tujuan'),
+            'keterangan'            => $this->input->post('keterangan'),
+            'vendor'                => $this->input->post('vendor'),
+            'armada'                => $this->input->post('armada'),
+            'jumlah_barang'         => $this->input->post('jumlah_barang'),
+            'nilai_inv'             => $this->input->post('nilai_inv'),
+            'status_pengiriman'     => $this->input->post('status_pengiriman'),
         );
-
+        $data['verif'] = "baru";
         $query = $this->db->insert('tb_pengiriman',$data);
+        $id = $this->db->insert_id();
+        $this->tambah_riwayat_pengiriman($id);
         return $query;
     }    
     public function editpengiriman($id=null)
@@ -91,6 +94,27 @@ class Model_admin_proses extends CI_Model {
             'jumlah_barang' => $this->input->post('jumlah_barang'),
             'nilai_inv'     => $this->input->post('nilai_inv'),
         );
+        $this->db->where('id',$id);
+        $query = $this->db->update('tb_pengiriman',$data);
+        return $query;
+    }
+    public function verifpengiriman($id=null)
+    {
+
+        $jangka_waktu = date('Y-m-d',strtotime($this->input->post('jangka_waktu')));
+        $data = array(
+            'jangka_waktu'  => $jangka_waktu,
+            'nama_barang'   => $this->input->post('nama_barang'),
+            'dari'          => $this->input->post('dari'),
+            'tujuan'        => $this->input->post('tujuan'),
+            'keterangan'    => $this->input->post('keterangan'),
+            'vendor'        => $this->input->post('vendor'),
+            'armada'        => $this->input->post('armada'),
+            'jumlah_barang' => $this->input->post('jumlah_barang'),
+            'nilai_inv'     => $this->input->post('nilai_inv'),
+        );
+        $data['verif'] = "verif";
+        $data['verifiedby'] = $this->session->userdata('user_id');
         $this->db->where('id',$id);
         $query = $this->db->update('tb_pengiriman',$data);
         return $query;
@@ -424,6 +448,7 @@ class Model_admin_proses extends CI_Model {
             'ppn'               => $ppn, 
             'total'             => $total, 
         );
+        $data['created_by'] = $this->session->userdata('user_id');
         $query = $this->db->insert('tb_invoice',$data);
         return $query;
     }    
@@ -441,6 +466,28 @@ class Model_admin_proses extends CI_Model {
             'ppn'               => $ppn, 
             'total'             => $total, 
         );
+        $this->db->where('id_inv',$id);
+        $query = $this->db->update('tb_invoice',$data);
+        return $query;
+    }
+
+    public function verif_invoice($id=null){
+
+        $dpp = $this->input->post('dpp');
+        $tgl_inv = date('Y-m-d',strtotime($this->input->post('tgl_inv')));
+        $ppn = ($dpp * 1) / 100;
+        $total = $dpp + $ppn;
+        $data = array(
+            'id_cust'           => $this->input->post('nama_pabrik'), 
+            'no_inv'            => $this->input->post('no_inv'), 
+            'description'       => $this->input->post('description'), 
+            'tgl_inv'           => $tgl_inv, 
+            'dpp'               => $dpp, 
+            'ppn'               => $ppn, 
+            'total'             => $total, 
+        );
+        $data['verif'] = "verif";
+        $data['verifiedby'] = $this->session->userdata('user_id');
         $this->db->where('id_inv',$id);
         $query = $this->db->update('tb_invoice',$data);
         return $query;
@@ -467,5 +514,77 @@ class Model_admin_proses extends CI_Model {
         $this->db->where('id_inv',$id);
         $query = $this->db->update('tb_invoice',$data);
         return $query;       
+    }
+
+    public function getnopobyid($id=null)
+    {
+        $this->db->where('id',$id);
+        $query = $this->db->get('tb_pengiriman');
+        if ($query->num_rows()>0){
+            foreach ($query->result_array() as $row){ $hasil=$row ; }
+            return $hasil;
+        }
+    }   
+    public function tambah_riwayat_pengiriman($idpengiriman=null){
+
+        $nopo = $this->getnopobyid($idpengiriman);
+        $data['idpeng'] = $idpengiriman;
+        $data['nopo'] = $nopo['no_po'];
+        $data['status'] = $this->input->post('status_pengiriman');
+        $this->db->insert('riwayat_pengiriman',$data);
+        return $idpengiriman;
+    }
+    public function tambahsuratjalan(){
+
+        $data['status']          = "baru";
+        $data['verif']           = "baru";
+        $data['nopo']            = $this->input->post('nopo');
+        $data['keterangan']      = $this->input->post('ket');
+        $data['tgl_surat_jalan'] = date('Y-m-d',strtotime($this->input->post('tgl_sj')));
+        $data['tgl_jt_sj'] = date('Y-m-d',strtotime($this->input->post('jt')));
+        $data['user_id'] = $this->session->userdata('user_id');
+
+        $q = $this->db->insert('surat_jalan',$data);
+        return $q;
+    
+    }
+    public function editsuratjalan($id=null){
+
+        $data['nopo']            = $this->input->post('nopo');
+        $data['keterangan']      = $this->input->post('ket');
+        $data['tgl_surat_jalan'] = date('Y-m-d',strtotime($this->input->post('tgl_sj')));
+        $data['tgl_jt_sj'] = date('Y-m-d',strtotime($this->input->post('jt')));
+        $data['user_id'] = $this->session->userdata('user_id');
+
+        $this->db->where('id_sj',$id);
+        $q = $this->db->update('surat_jalan',$data);
+        return $q;
+    
+    }
+    public function verifsuratjalan($id=null){
+
+        $data['nopo']            = $this->input->post('nopo');
+        $data['keterangan']      = $this->input->post('ket');
+        $data['tgl_surat_jalan'] = date('Y-m-d',strtotime($this->input->post('tgl_sj')));
+        $data['tgl_jt_sj'] = date('Y-m-d',strtotime($this->input->post('jt')));
+        $data['verifiedby'] = $this->session->userdata('user_id');
+        $data['verif'] = "verif";
+        $this->db->where('id_sj',$id);
+        $q = $this->db->update('surat_jalan',$data);
+        return $q;
+    
+    }
+    public function lunassuratjalan($id=null){
+
+        $data['status'] = "LUNAS";
+        $this->db->where('id_sj',$id);
+        $q = $this->db->update('surat_jalan',$data);
+        return $q;
+    }
+    public function hapussuratjalan($id=null){
+
+        $this->db->where('id_sj',$id);
+        $q = $this->db->delete('surat_jalan');
+        return $q;
     }
 }

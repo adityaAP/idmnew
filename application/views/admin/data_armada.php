@@ -33,15 +33,6 @@
                   <div class="tab-body">
                     <form class="form-horizontal" method="post" enctype="multipart/form-data"> 
                       <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Vendor</label>
-                        <div class="col-sm-4">
-                         <select class="form-control" name="vendor">
-                          <option>-- Pilih Vendor --</option>
-                           <?php if ($vendor!='') { foreach ($vendor as $value) { ?>
-                             <option <?=isset($armadabyid)&&$armadabyid['id_vendor']==$value['id_vendor']?"selected":''; ?> value="<?=$value['id_vendor']?>"><?=$value['nama_vendor']?></option>
-                          <?php  }} ?>
-                         </select>
-                        </div>
                         <label for="inputName" class="col-sm-2 col-form-label">Jenis Armada</label>
                         <div class="col-sm-4">
                           <input type="text" name="jenis" class="form-control" value="<?=isset($armadabyid)?$armadabyid['jenis_armada']:'';?>" >
@@ -76,7 +67,6 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Vendor</th>
                   <th>Jenis Armada</th>
                   <th>Aksi</th>
                 </tr>
@@ -88,7 +78,6 @@
                       ?>
                   <tr>
                     <td><?=$no++;?></td>
-                    <td><?=$this->kode_converter->vendor($data['id_vendor'])?></td>
                     <td><?=$data['jenis_armada']?></td>
                     <td>
                     <?php if ($this->session->userdata('rule')!='admin_jkt') { ?>

@@ -26,7 +26,7 @@ class Login extends CI_Controller {
                         );
                         //set session userdata
                         $this->session->set_userdata($session_data);
-                        redirect('admin/');
+                        redirect('admin/dashboard');
                     }
                 }else{
 				        $this->session->set_flashdata('login',TRUE);

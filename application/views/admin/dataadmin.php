@@ -40,6 +40,7 @@
                   <th>Nama</th>
                   <th>Email</th>
                   <th>Nomor Telp</th>
+                  <th>Posisi</th>
                   <th>Aksi</th>
                 </tr>
                 </thead>
@@ -54,6 +55,7 @@
                     <td><?=$data['nama']?></td>
                     <td><?=$data['email']?></td>
                     <td><?=$data['telp']?></td>
+                    <td><?=$data['rule']?></td>
                     <td>
                       <a href="<?=site_url('admin/editadmin?id='.$data['user_id'].'')?>" class="btn btn-sm btn-info">Edit</a>
                       <a href="<?=site_url('admin/hapusadmin?id='.$data['user_id'].'')?>" class="btn btn-sm btn-danger" onclick="return cek_delete()">Hapus</a>

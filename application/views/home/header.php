@@ -7,10 +7,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
 		<title>PT. Intan Daya Mandiri</title>	
-
-		<meta name="keywords" content="HTML5 Template" />
-		<meta name="description" content="Porto - Responsive HTML5 Template">
-		<meta name="author" content="okler.net">
+    	<link rel="icon" href="<?=base_url('assets/logo/idm.png')?>">
+		<meta name="keywords" content="PTintandayamandiri" />
+		<meta name="description" content="PT Intan Daya Mandiri - Your Business Partner">
+		<!-- <meta name="author" content="okler.net"> -->
 
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
@@ -73,7 +73,7 @@
 								<div class="header-row">
 									<div class="header-logo">
 										<a href="<?=site_url('home')?>">
-											<img alt="Porto" width="80" height="80" src="<?=base_url('assets/home/')?>logo/idm.png">
+											
 										</a>
 									</div>
 								</div>
@@ -85,28 +85,28 @@
 											<nav class="collapse">
 												<ul class="nav nav-pills" id="mainNav">
 													<li class="dropdown">
-														<a class="dropdown-item dropdown-toggle" href="<?=site_url('home/')?>">
+														<a class="dropdown-item dropdown-toggle" href="<?=site_url('home/')?>" style="color:black;font-weight:bold;">
 															Home
 														</a>
 
 													</li>
 													<li class="dropdown dropdown-mega">
-														<a class="dropdown-item dropdown-toggle" href="<?=site_url('home/services')?>">
+														<a class="dropdown-item dropdown-toggle" href="<?=site_url('home/services')?>" style="color:black;font-weight:bold;">
 															Services
 														</a>
 													</li>
 													<li class="dropdown dropdown-mega">
-														<a class="dropdown-item dropdown-toggle" href="<?=site_url('home/about')?>">
+														<a class="dropdown-item dropdown-toggle" href="<?=site_url('home/about')?>" style="color:black;font-weight:bold;">
 															about
 														</a>
 													</li>
 													<li class="dropdown dropdown-mega">
-														<a class="dropdown-item dropdown-toggle" href="<?=site_url('home/contact')?>">
+														<a class="dropdown-item dropdown-toggle" href="<?=site_url('home/contact')?>" style="color:black;font-weight:bold;">
 															contact
 														</a>
 													</li>
 													<li class="dropdown dropdown-mega">
-														<a class="dropdown-item dropdown-toggle" href="<?=site_url('home/tracking')?>">
+														<a class="dropdown-item dropdown-toggle" href="<?=site_url('home/tracking')?>" style="color:black;font-weight:bold;">
 															Tracking
 														</a>
 													</li>

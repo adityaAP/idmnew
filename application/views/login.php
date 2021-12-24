@@ -27,7 +27,8 @@
   }
   </style>
 </head>
-<body class="hold-transition login-page" style="background: url(<?=base_url('assets/logo/bg.jpeg')?>) no-repeat center center fixed;">
+<!-- <body class="hold-transition login-page" style="background: url(<?=base_url('assets/logo/bg.jpeg')?>) no-repeat center center fixed;"> -->
+<body class="hold-transition login-page">
 <script src="<?=base_url('assets/dist/js/jquery-slim.min.js')?>"></script>
 <script src="<?=base_url('assets/dist/js/popper.min.js')?>"></script>
 <script src="<?=base_url('assets/dist/js/jquery.min.js')?>"></script>
@@ -76,12 +77,12 @@ setTimeout(function(){$("#notifikasi").html('');}, 3000);
 </script>     
 <div class="login-box">
   <div class="login-logo"> 
-    <img style="max-width:200px;max-height:150px;margin-bottom:50px;" src="<?=base_url('assets/logo/idm.png')?>"><br> 
+    <img style="max-width:200px;max-height:150px;margin-bottom:20px;" src="<?=base_url('assets/logo/idm.png')?>"><br> 
   </div>
   <!-- /.login-logo -->
-  <div class="card">
-    <div class="card-body login-card-body">
-      <p class="login-box-msg">Login</p>
+  <div class="card" >
+    <div class="card-body login-card-body" style="border-radius:30px;">
+      <p class="login-box-msg">Login Disini</p>
       <form action="" method="post">
         <div class="input-group mb-3">
           <input type="email" class="form-control" placeholder="Email" name="email">

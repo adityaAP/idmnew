@@ -1,28 +1,16 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
-
-  # Subfolder on main domain (public_html/idmnew/):
-  RewriteBase /idmnew/
-
-  # Subdomain root only — comment line above and use:
-  # RewriteBase /
-
+  RewriteBase /
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^(.*)$ index.php/$1 [L,QSA]
-
   Options -Indexes
-</IfModule>
-
-<IfModule !mod_rewrite.c>
-  ErrorDocument 404 /idmnew/index.php
 </IfModule>
 
 <IfModule mod_env.c>
   SetEnv CI_ENV production
 </IfModule>
 
-# CodeIgniter 3 needs PHP 8.1 — PHP 8.4 causes HTTP 500 on index.php
 <IfModule mime_module>
   AddHandler application/x-httpd-ea-php81___lsphp .php
 </IfModule>

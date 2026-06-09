@@ -20,23 +20,29 @@ class Home extends CI_Controller {
 		curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true);
 		$contents = curl_exec($ch);
 		if (curl_errno($ch)) {
-		  echo curl_error($ch);
-		  echo "\n<br />";
 		  $contents = '';
 		} else {
 		  curl_close($ch);
 		}
 
 		if (!is_string($contents) || !strlen($contents)) {
-		echo "Failed to get contents.";
-		$contents = '';
+		  $contents = '';
 		}
 		return $contents;
 	}
-	public function index()
+
+	private function getCountry()
 	{
 		$ip = json_decode($this->getip());
-		$negara = $ip->country;
+		if (!is_object($ip) || empty($ip->country)) {
+			return 'ID';
+		}
+		return $ip->country;
+	}
+
+	public function index()
+	{
+		$negara = $this->getCountry();
 		$this->load->view('home/header');
 		if ($negara!== false && $negara!='ID') {
 			$this->load->view('home/home');
@@ -58,8 +64,7 @@ class Home extends CI_Controller {
 	
 	public function about()
 	{
-		$ip = json_decode($this->getip());
-		$negara = $ip->country;
+		$negara = $this->getCountry();
 		$this->load->view('home/header');
 		if ($negara!== false && $negara!='ID') {
 			$this->load->view('home/about');
@@ -100,8 +105,7 @@ class Home extends CI_Controller {
 	}
 	public function services()
 	{
-		$ip = json_decode($this->getip());
-		$negara = $ip->country;
+		$negara = $this->getCountry();
 		$this->load->view('home/header');
 		if ($negara!== false && $negara!='ID') {
 			$this->load->view('home/services');
@@ -113,8 +117,7 @@ class Home extends CI_Controller {
 	}
 	public function contact()
 	{
-		$ip = json_decode($this->getip());
-		$negara = $ip->country;
+		$negara = $this->getCountry();
 		$this->load->view('home/header');
 		if ($negara!== false && $negara!='ID') {
 			$this->load->view('home/contact');
@@ -133,8 +136,7 @@ class Home extends CI_Controller {
 			$data['drtfirst'] = $this->home_m->data_riwayat_trackingbyid($this->input->get('ponumb'));
 		}
 
-		$ip = json_decode($this->getip());
-		$negara = $ip->country;
+		$negara = $this->getCountry();
 
 		$this->load->view('home/header');
 		if ($negara=='ID') {
